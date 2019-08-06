@@ -14,9 +14,11 @@ robability) to a LootBox and draw it.
   <li>Can see the items to picked</li>
 </ul>
 
+## Progress
+![랜덤Eng](https://user-images.githubusercontent.com/38483113/62504154-2af3b100-b832-11e9-9d53-6df26a29cac1.png)
+
 ## How to Use
 developing...
-
 
 ## 요약 (Kor)
 이 프로그램은 랜덤박스 프로그램입니다. 이 프로그램에 아이템(이미지, 이름, 확률)을 넣고, 랜덤 박스를 시도해 볼 수 있습니다.
@@ -29,6 +31,9 @@ developing...
   <li>뽑기를 시도해 볼 수 있음</li>
   <li>내가 뽑은 아이템들을 확인해 볼 수 있음</li>
 </ul>
+
+## 진척도
+![랜덤Kor](https://user-images.githubusercontent.com/38483113/62504155-2cbd7480-b832-11e9-97b4-bb1530c48cd5.PNG)
 
 ## 사용 방법
 제작 중..
@@ -44,6 +49,9 @@ developing...
   <li>ガチャができる。</li>
   <li>私が選んだアイテムが確認できる。</li>
 </ul>
+
+## 進捗度
+![랜덤Jpn](https://user-images.githubusercontent.com/38483113/62504157-2e873800-b832-11e9-8868-d9c5b1da7dc3.PNG)
 
 ## 使用方法
 開発中。。
