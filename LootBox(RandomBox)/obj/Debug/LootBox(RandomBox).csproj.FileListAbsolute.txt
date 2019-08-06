@@ -1,0 +1,10 @@
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\bin\Debug\LootBox(RandomBox).exe.config
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\bin\Debug\LootBox(RandomBox).exe
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\bin\Debug\LootBox(RandomBox).pdb
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox(RandomBox).csprojAssemblyReference.cache
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.Properties.Resources.resources
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox(RandomBox).csproj.GenerateResource.cache
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox(RandomBox).csproj.CoreCompileInputs.cache
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox(RandomBox).exe
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox(RandomBox).pdb
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.mainWindow.resources
