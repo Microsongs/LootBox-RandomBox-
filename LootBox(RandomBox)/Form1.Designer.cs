@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             this.box_listBox = new System.Windows.Forms.ListBox();
-            this.loot_listBox = new System.Windows.Forms.ListBox();
+            this.result_listBox = new System.Windows.Forms.ListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.boxList_label = new System.Windows.Forms.Label();
-            this.lootingList_label = new System.Windows.Forms.Label();
+            this.result_label = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.lootBoxImage = new System.Windows.Forms.PictureBox();
@@ -52,14 +52,14 @@
             this.box_listBox.Size = new System.Drawing.Size(349, 529);
             this.box_listBox.TabIndex = 0;
             // 
-            // loot_listBox
+            // result_listBox
             // 
-            this.loot_listBox.FormattingEnabled = true;
-            this.loot_listBox.ItemHeight = 25;
-            this.loot_listBox.Location = new System.Drawing.Point(971, 77);
-            this.loot_listBox.Name = "loot_listBox";
-            this.loot_listBox.Size = new System.Drawing.Size(349, 529);
-            this.loot_listBox.TabIndex = 1;
+            this.result_listBox.FormattingEnabled = true;
+            this.result_listBox.ItemHeight = 25;
+            this.result_listBox.Location = new System.Drawing.Point(971, 77);
+            this.result_listBox.Name = "result_listBox";
+            this.result_listBox.Size = new System.Drawing.Size(349, 529);
+            this.result_listBox.TabIndex = 1;
             // 
             // addButton
             // 
@@ -81,15 +81,15 @@
             this.boxList_label.TabIndex = 3;
             this.boxList_label.Text = "Box List";
             // 
-            // lootingList_label
+            // result_label
             // 
-            this.lootingList_label.AutoSize = true;
-            this.lootingList_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lootingList_label.Location = new System.Drawing.Point(965, 25);
-            this.lootingList_label.Name = "lootingList_label";
-            this.lootingList_label.Size = new System.Drawing.Size(164, 33);
-            this.lootingList_label.TabIndex = 4;
-            this.lootingList_label.Text = "Looting List";
+            this.result_label.AutoSize = true;
+            this.result_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.result_label.Location = new System.Drawing.Point(965, 25);
+            this.result_label.Name = "result_label";
+            this.result_label.Size = new System.Drawing.Size(98, 33);
+            this.result_label.TabIndex = 4;
+            this.result_label.Text = "Result";
             // 
             // deleteButton
             // 
@@ -161,10 +161,10 @@
             this.Controls.Add(this.lootBoxImage);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.lootingList_label);
+            this.Controls.Add(this.result_label);
             this.Controls.Add(this.boxList_label);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.loot_listBox);
+            this.Controls.Add(this.result_listBox);
             this.Controls.Add(this.box_listBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainWindow";
@@ -178,10 +178,10 @@
         #endregion
 
         private System.Windows.Forms.ListBox box_listBox;
-        private System.Windows.Forms.ListBox loot_listBox;
+        private System.Windows.Forms.ListBox result_listBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label boxList_label;
-        private System.Windows.Forms.Label lootingList_label;
+        private System.Windows.Forms.Label result_label;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.PictureBox lootBoxImage;

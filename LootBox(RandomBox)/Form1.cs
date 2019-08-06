@@ -61,7 +61,7 @@ namespace LootBox_RandomBox_
                 saveButton.Text = "Save";
                 loadButton.Text = "Load";
                 tryButton.Text = "Try";
-                lootingList_label.Text = "Result";
+                result_label.Text = "Result";
             }
             // 한국어
             else if (language_comboList.SelectedIndex == 1)
@@ -73,7 +73,7 @@ namespace LootBox_RandomBox_
                 saveButton.Text = "저장";
                 loadButton.Text = "불러오기";
                 tryButton.Text = "뽑기";
-                lootingList_label.Text = "결과 목록";
+                result_label.Text = "결과 목록";
             }
             // 日本語
             else
@@ -85,7 +85,7 @@ namespace LootBox_RandomBox_
                 saveButton.Text = "セーブ";
                 loadButton.Text = "ロード";
                 tryButton.Text = "開く";
-                lootingList_label.Text = "結果リスト";
+                result_label.Text = "結果リスト";
             }
         }
     }
