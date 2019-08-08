@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
-            this.box_listBox = new System.Windows.Forms.ListBox();
-            this.result_listBox = new System.Windows.Forms.ListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.boxList_label = new System.Windows.Forms.Label();
             this.result_label = new System.Windows.Forms.Label();
@@ -40,26 +38,12 @@
             this.loadButton = new System.Windows.Forms.Button();
             this.tryButton = new System.Windows.Forms.Button();
             this.language_comboList = new System.Windows.Forms.ComboBox();
+            this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
+            this.result_dataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // box_listBox
-            // 
-            this.box_listBox.FormattingEnabled = true;
-            this.box_listBox.ItemHeight = 25;
-            this.box_listBox.Location = new System.Drawing.Point(47, 77);
-            this.box_listBox.Name = "box_listBox";
-            this.box_listBox.Size = new System.Drawing.Size(349, 529);
-            this.box_listBox.TabIndex = 0;
-            // 
-            // result_listBox
-            // 
-            this.result_listBox.FormattingEnabled = true;
-            this.result_listBox.ItemHeight = 25;
-            this.result_listBox.Location = new System.Drawing.Point(971, 77);
-            this.result_listBox.Name = "result_listBox";
-            this.result_listBox.Size = new System.Drawing.Size(349, 529);
-            this.result_listBox.TabIndex = 1;
             // 
             // addButton
             // 
@@ -75,7 +59,7 @@
             // 
             this.boxList_label.AutoSize = true;
             this.boxList_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxList_label.Location = new System.Drawing.Point(41, 25);
+            this.boxList_label.Location = new System.Drawing.Point(12, 25);
             this.boxList_label.Name = "boxList_label";
             this.boxList_label.Size = new System.Drawing.Size(119, 33);
             this.boxList_label.TabIndex = 3;
@@ -85,7 +69,7 @@
             // 
             this.result_label.AutoSize = true;
             this.result_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.result_label.Location = new System.Drawing.Point(965, 25);
+            this.result_label.Location = new System.Drawing.Point(989, 25);
             this.result_label.Name = "result_label";
             this.result_label.Size = new System.Drawing.Size(98, 33);
             this.result_label.TabIndex = 4;
@@ -111,9 +95,9 @@
             // 
             // lootBoxImage
             // 
-            this.lootBoxImage.Location = new System.Drawing.Point(471, 77);
+            this.lootBoxImage.Location = new System.Drawing.Point(500, 77);
             this.lootBoxImage.Name = "lootBoxImage";
-            this.lootBoxImage.Size = new System.Drawing.Size(437, 443);
+            this.lootBoxImage.Size = new System.Drawing.Size(437, 529);
             this.lootBoxImage.TabIndex = 7;
             this.lootBoxImage.TabStop = false;
             this.lootBoxImage.Click += new System.EventHandler(this.LootBoxImage_Click);
@@ -132,7 +116,7 @@
             this.tryButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tryButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tryButton.Location = new System.Drawing.Point(609, 552);
+            this.tryButton.Location = new System.Drawing.Point(654, 642);
             this.tryButton.Name = "tryButton";
             this.tryButton.Size = new System.Drawing.Size(151, 71);
             this.tryButton.TabIndex = 9;
@@ -150,11 +134,35 @@
             this.language_comboList.TabIndex = 10;
             this.language_comboList.SelectedIndexChanged += new System.EventHandler(this.Language_comboList_SelectedIndexChanged);
             // 
+            // itemList_dataGridView
+            // 
+            this.itemList_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemList_dataGridView.Location = new System.Drawing.Point(12, 77);
+            this.itemList_dataGridView.Name = "itemList_dataGridView";
+            this.itemList_dataGridView.ReadOnly = true;
+            this.itemList_dataGridView.RowHeadersWidth = 82;
+            this.itemList_dataGridView.RowTemplate.Height = 33;
+            this.itemList_dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.itemList_dataGridView.Size = new System.Drawing.Size(455, 504);
+            this.itemList_dataGridView.TabIndex = 11;
+            // 
+            // result_dataGridView
+            // 
+            this.result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.result_dataGridView.Location = new System.Drawing.Point(969, 77);
+            this.result_dataGridView.Name = "result_dataGridView";
+            this.result_dataGridView.RowHeadersWidth = 82;
+            this.result_dataGridView.RowTemplate.Height = 33;
+            this.result_dataGridView.Size = new System.Drawing.Size(455, 504);
+            this.result_dataGridView.TabIndex = 12;
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1436, 751);
+            this.Controls.Add(this.result_dataGridView);
+            this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.language_comboList);
             this.Controls.Add(this.tryButton);
             this.Controls.Add(this.loadButton);
@@ -164,21 +172,18 @@
             this.Controls.Add(this.result_label);
             this.Controls.Add(this.boxList_label);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.result_listBox);
-            this.Controls.Add(this.box_listBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainWindow";
             this.Text = "LootBox(RandomBox)";
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox box_listBox;
-        private System.Windows.Forms.ListBox result_listBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label boxList_label;
         private System.Windows.Forms.Label result_label;
@@ -188,6 +193,8 @@
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button tryButton;
         private System.Windows.Forms.ComboBox language_comboList;
+        private System.Windows.Forms.DataGridView itemList_dataGridView;
+        private System.Windows.Forms.DataGridView result_dataGridView;
     }
 }
 
