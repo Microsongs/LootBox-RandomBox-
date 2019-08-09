@@ -32,6 +32,7 @@ namespace LootBox_RandomBox_
             // English
             if(selected == 0)
             {
+                this.Text = "Add";
                 dataInputLabel.Text = "Enter data";
                 nameLabel.Text = "Name：";
                 probabilityLabel.Text = "Prob : ";
@@ -42,6 +43,7 @@ namespace LootBox_RandomBox_
             // 한국어
             else if(selected == 1)
             {
+                this.Text = "추가";
                 dataInputLabel.Text = "데이터 입력";
                 nameLabel.Text = "이름 : ";
                 probabilityLabel.Text = "확률 : ";
@@ -52,6 +54,7 @@ namespace LootBox_RandomBox_
             // 日本語
             else
             {
+                this.Text = "追加";
                 dataInputLabel.Text = "データを追加";
                 nameLabel.Text = "名前 : ";
                 probabilityLabel.Text = "確率 : ";
