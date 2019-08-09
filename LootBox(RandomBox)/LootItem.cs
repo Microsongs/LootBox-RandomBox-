@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LootBox_RandomBox_
 {
-    class LootItem
+    public class LootItem
     {
         // 이름, 사진, 확률
         string name;
@@ -20,6 +20,12 @@ namespace LootBox_RandomBox_
             this.itemImage = itemImage;
             this.probability = probability;
         }
+        public LootItem(string name, decimal probability)
+        {
+            this.name = name;
+            this.probability = probability;
+        }
+
         public string Name
         {
             get { return name; }

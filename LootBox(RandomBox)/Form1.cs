@@ -22,6 +22,14 @@ namespace LootBox_RandomBox_
         // 확률
         DataGridViewTextBoxColumn probabilityColumn = new DataGridViewTextBoxColumn();
 
+        //아이템 리스트
+        List<LootItem> itemList = new List<LootItem>();
+        public void AddItem(LootItem myitem)
+        {
+            itemList.Add(myitem);
+            itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability);
+        }
+
         public mainWindow()
         {
             InitializeComponent();
@@ -48,8 +56,6 @@ namespace LootBox_RandomBox_
         }
         private void ItemListInit()
         {
-
-
             //그룹박스
             //GroupBox checkGroup = new GroupBox();
             //checkGroup.Controls.Add(checkColumn);
@@ -83,8 +89,8 @@ namespace LootBox_RandomBox_
             //itemList_dataGridView.Columns[3].ReadOnly = true;
             //itemList_dataGridView.Rows.Add(1, newSize, "전설의 검", "100");
             //itemList_dataGridView.Rows.Add(0, newSize, "불꽃의 검", "100");
-            itemList_dataGridView.Rows.Add(newSize, "ドラゴンソード", "70");
-            itemList_dataGridView.Rows.Add(newSize, "炎の剣", "30");
+            //itemList_dataGridView.Rows.Add(newSize, "ドラゴンソード", "70");
+            //itemList_dataGridView.Rows.Add(newSize, "炎の剣", "30");
 
             itemList_dataGridView.RowHeadersVisible = false;
             itemList_dataGridView.AllowUserToDeleteRows = false;
@@ -110,7 +116,11 @@ namespace LootBox_RandomBox_
         // Add 버튼으로 아이템을 추가하기 위함
         private void AddButton_Click(object sender, EventArgs e)
         {
+            
+            AddBtnForm addBtnForm = new AddBtnForm(language_comboList.SelectedIndex, this);
+            addBtnForm.Location = new Point(Cursor.Position.X,Cursor.Position.Y);
 
+            addBtnForm.ShowDialog();
         }
 
         // language_comboList의 이벤트 핸들러
@@ -127,6 +137,8 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "Load";
                 tryButton.Text = "Try";
                 result_label.Text = "Result";
+                // boxlist
+
                 imgColumn.HeaderText = "Image";
                 imgColumn.Name = "Image";
                 nameColumn.HeaderText = "Name";
@@ -145,6 +157,8 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "불러오기";
                 tryButton.Text = "뽑기";
                 result_label.Text = "결과 목록";
+                
+                // boxlist
                 imgColumn.HeaderText = "이미지";
                 imgColumn.Name = "Image";
                 nameColumn.HeaderText = "이름";
@@ -163,6 +177,8 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "ロード";
                 tryButton.Text = "開く";
                 result_label.Text = "結果リスト";
+
+                // boxlist
                 imgColumn.HeaderText = "イメージ";
                 imgColumn.Name = "Image";
                 nameColumn.HeaderText = "名前";
