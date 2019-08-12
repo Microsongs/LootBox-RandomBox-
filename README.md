@@ -17,7 +17,7 @@ robability) to a LootBox and draw it.
 </ul>
 
 ## Progress
-![Honeycam 2019-08-12 15-03-24](https://user-images.githubusercontent.com/38483113/62849583-2429da00-bd1b-11e9-855f-8aa480dffa54.gif)
+![Honeycam 2019-08-12 16-09-28](https://user-images.githubusercontent.com/38483113/62849699-96022380-bd1b-11e9-985b-01c01512a3a3.gif)
 
 ## How to Use
 developing...
