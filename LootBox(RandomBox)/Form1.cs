@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,7 +65,6 @@ namespace LootBox_RandomBox_
             //checkColumn.HeaderText = "삭제";
             //checkColumn.Name = "column";
 
-
             // 열에 추가
             //itemList_dataGridView.Columns.Add(checkColumn);
             itemList_dataGridView.Columns.Add(imgColumn);
@@ -75,12 +75,13 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.Columns[1].Width = 110;
             itemList_dataGridView.Columns[2].Width = 56;
 
-
+            /*
             Image image = Image.FromFile(@"../../images/tempSword.png");
             int width = 35;
             int height = 30;
             Size resize = new Size(width, height);
             Bitmap newSize = new Bitmap(image,resize);
+            */
 
             itemList_dataGridView.ReadOnly = true;
             //itemList_dataGridView.Rows[0].ReadOnly = true;
@@ -106,8 +107,6 @@ namespace LootBox_RandomBox_
             language_comboList.SelectedIndex = 0;
         }
 
-
-
         private void LootBoxImage_Click(object sender, EventArgs e)
         {
 
@@ -118,7 +117,7 @@ namespace LootBox_RandomBox_
         {
             
             AddBtnForm addBtnForm = new AddBtnForm(language_comboList.SelectedIndex, this);
-            addBtnForm.Location = new Point(Cursor.Position.X,Cursor.Position.Y);
+            //addBtnForm.Location = new Point(Cursor.Position.X + 50,Cursor.Position.Y-200);
 
             addBtnForm.ShowDialog();
         }
@@ -191,6 +190,32 @@ namespace LootBox_RandomBox_
         private void Box_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DeleteBtnForm deleteBtnForm = new DeleteBtnForm(language_comboList.SelectedIndex, itemList, this);
+            //deleteBtnForm.Location= new Point(Cursor.Position.X, Cursor.Position.Y);
+
+            deleteBtnForm.ShowDialog();
+        }
+
+        // 체크된 리스트를 지우는 함수
+        public void deleteList(List<int> deleteIndex)
+        {
+            for(int i = deleteIndex.Count - 1;i >= 0; i--)
+            {
+                Debug.WriteLine(deleteIndex.Count.ToString());
+                Debug.WriteLine(deleteIndex[0].ToString());
+                itemList.RemoveAt(deleteIndex[i]);
+                itemList_dataGridView.Rows.Remove(itemList_dataGridView.Rows[deleteIndex[i]]);
+                deleteIndex.RemoveAt(i);
+            }
+        }
+
+        private void TestBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(itemList.Count.ToString());
         }
     }
 }

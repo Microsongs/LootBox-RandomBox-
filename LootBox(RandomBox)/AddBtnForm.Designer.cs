@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBtnForm));
             this.nameLabel = new System.Windows.Forms.Label();
             this.dataInputLabel = new System.Windows.Forms.Label();
             this.nameTextbox = new System.Windows.Forms.TextBox();
@@ -143,6 +144,7 @@
             this.Controls.Add(this.nameTextbox);
             this.Controls.Add(this.dataInputLabel);
             this.Controls.Add(this.nameLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddBtnForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AddBtnForm";

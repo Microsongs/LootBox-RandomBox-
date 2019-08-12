@@ -40,6 +40,7 @@
             this.language_comboList = new System.Windows.Forms.ComboBox();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.result_dataGridView = new System.Windows.Forms.DataGridView();
+            this.testBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).BeginInit();
@@ -83,6 +84,7 @@
             this.deleteButton.TabIndex = 5;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // saveButton
             // 
@@ -156,11 +158,22 @@
             this.result_dataGridView.Size = new System.Drawing.Size(455, 504);
             this.result_dataGridView.TabIndex = 12;
             // 
+            // testBtn
+            // 
+            this.testBtn.Location = new System.Drawing.Point(1291, 643);
+            this.testBtn.Name = "testBtn";
+            this.testBtn.Size = new System.Drawing.Size(132, 69);
+            this.testBtn.TabIndex = 13;
+            this.testBtn.Text = "TestBtn";
+            this.testBtn.UseVisualStyleBackColor = true;
+            this.testBtn.Click += new System.EventHandler(this.TestBtn_Click);
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1436, 751);
+            this.Controls.Add(this.testBtn);
             this.Controls.Add(this.result_dataGridView);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.language_comboList);
@@ -195,6 +208,7 @@
         private System.Windows.Forms.ComboBox language_comboList;
         private System.Windows.Forms.DataGridView itemList_dataGridView;
         private System.Windows.Forms.DataGridView result_dataGridView;
+        private System.Windows.Forms.Button testBtn;
     }
 }
 
