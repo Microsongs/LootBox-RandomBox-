@@ -13,17 +13,25 @@ namespace LootBox_RandomBox_
         string name;
         Image itemImage;
         decimal probability;
+        string imgFilePath;
 
-        public LootItem(string name, Image itemImage, decimal probability)
+        public LootItem(string name, Image itemImage, decimal probability, string imgFilePath)
         {
             this.name = name;
             this.itemImage = itemImage;
             this.probability = probability;
+            this.imgFilePath = imgFilePath;
+        }
+        public string ImgFIlePath
+        {
+            get { return imgFilePath; }
+            set { imgFilePath = value; }
         }
         public LootItem(string name, decimal probability)
         {
             this.name = name;
             this.probability = probability;
+            this.imgFilePath = "";
         }
 
         public string Name

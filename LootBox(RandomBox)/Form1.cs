@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace LootBox_RandomBox_
@@ -28,7 +30,7 @@ namespace LootBox_RandomBox_
         public void AddItem(LootItem myitem)
         {
             itemList.Add(myitem);
-            itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability);
+            itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability.ToString("N3")+"%");
         }
 
         public mainWindow()
@@ -55,6 +57,8 @@ namespace LootBox_RandomBox_
             ItemListInit();
             LanguageInit();
         }
+
+        // 아이템 리스트에 데이터 추가
         private void ItemListInit()
         {
             //그룹박스
@@ -216,6 +220,117 @@ namespace LootBox_RandomBox_
         private void TestBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show(itemList.Count.ToString());
+        }
+
+        // 저장 버튼
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            using(FileStream fs = new FileStream("data.dat", FileMode.Create))
+            {
+                //BinaryWriter bw = new BinaryWriter(fs);
+                StreamWriter bw = new StreamWriter(fs, Encoding.UTF8);
+
+                string[] msg = new string[3];
+
+                if (itemList.Count != 0)
+                {
+                    for(int i=0; i<itemList.Count; i++)
+                    {
+                        if (itemList[i].ImgFIlePath == null) {
+                            bw.Write(itemList[i].Name+"\n");
+                            //Debug.WriteLine(Encoding.Default.GetString(itemList[i].ImgFIlePath));
+                            //bw.Write(itemList[i].ItemImage.FileName);
+                            bw.Write("noPath"+"\n");
+                            bw.Write(itemList[i].Probability+"\n");
+                        }
+                        else
+                        {
+                            bw.Write(itemList[i].Name+"\n");
+                            Debug.WriteLine(itemList[i].ImgFIlePath);
+                            bw.Write(itemList[i].ImgFIlePath+"\n");
+                            bw.Write(itemList[i].Probability+"\n");
+                        }
+                    }
+                    msg[0] = "Save Complete!";
+                    msg[1] = "저장 완료!";
+                    msg[2] = "サーブ完了";
+                    bw.Flush();
+                    MessageBox.Show(msg[language_comboList.SelectedIndex]);
+                }
+                else
+                {
+                    msg[0] = "No Data to Save";
+                    msg[1] = "저장할 데이터가 없습니다.";
+                    msg[2] = "データがありません。";
+                    bw.Flush();
+                    MessageBox.Show(msg[language_comboList.SelectedIndex]);
+                }
+            }
+        }
+
+        // 불러오기 버튼
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            //이미 만들어진 리스트가 있을 떄 덮어쓸것인지   
+            if(itemList.Count != 0)
+            {
+                string[] msg = new string[3] {
+                    "The existing List will be erased. are you okay?",
+                    "기존 리스트가 지워집니다. 괜찮으십니까?",
+                    "今のリストが消えます。問題ありませんですか。"
+                };
+                string[] headmsg = new string[3]
+                {
+                    "Warning",
+                    "경고",
+                    "警告"
+                };
+                if (MessageBox.Show(msg[language_comboList.SelectedIndex],headmsg[language_comboList.SelectedIndex],MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            string[] saveFile = File.ReadAllLines("data.dat");
+            if (saveFile != null)
+            {
+                for(int i=itemList.Count - 1; i>=0; i--)
+                {
+                    Debug.WriteLine(i);
+                    itemList_dataGridView.Rows.Remove(itemList_dataGridView.Rows[i]);
+                }
+                itemList.Clear();
+                for (int i=0; i<saveFile.Length; i += 3)
+                {   //이미지 파일이 없는 경우
+                    LootItem temp;
+                    if (saveFile[i + 1].Equals(""))
+                    {
+                        temp = new LootItem(saveFile[i + 0], decimal.Parse(saveFile[i + 2]));
+                    }
+                    else
+                    {
+                        Byte[] bytes = File.ReadAllBytes(saveFile[i + 1]);
+                        MemoryStream ms = new MemoryStream(bytes);
+                        Image image = Image.FromStream(ms);
+                        Bitmap sizeChangeImage = new Bitmap(image, new Size(35, 35));
+                        temp = (new LootItem(saveFile[i + 0], sizeChangeImage, decimal.Parse(saveFile[i + 2]), saveFile[i + 1]));
+                        ms.Flush();
+                    }
+                    AddItem(temp);
+                }
+            }
+
+            /*
+            using (FileStream fs = new FileStream("data.txt", FileMode.Append))
+            {
+                if (fs == null)
+                {
+                    MessageBox.Show("불러올 저장 데이터가 없습니다.");
+                    return;
+                }
+                string[] textValue = File.ReadAllLines()
+            }
+            */
         }
     }
 }

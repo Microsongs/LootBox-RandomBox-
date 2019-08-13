@@ -67,7 +67,7 @@ namespace LootBox_RandomBox_
                 probabilityLabel.Text = "確率 : ";
                 imageLabel.Text = "イメージ : ";
                 imageButton.Text = "登録";
-                saveButton.Text = "サーブ";
+                saveButton.Text = "セーブ";
             }
         }
 
@@ -122,7 +122,7 @@ namespace LootBox_RandomBox_
                 }
                 else if (selected == 1)
                 {
-                    MessageBox.Show("이름을 넣어주세요을 불러오세요!", "이름 오류!");
+                    MessageBox.Show("이름을 넣어주세요!", "이름 오류!");
                 }
                 else
                 {
@@ -130,6 +130,7 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+
             // 20바이트 초과 유무 확인
             else if(Encoding.Default.GetBytes(nameTextbox.Text).Length > 20)
             {
@@ -147,6 +148,7 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+
             // 확률 입력 확인
             else if (probabilityTextbox.TextLength == 0)
             {
@@ -176,7 +178,7 @@ namespace LootBox_RandomBox_
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //string img_folder = @"../../images";
-            string img_folder = "images";
+            string img_folder = "images\\";
             LootItem lootitem;
 
             // 저장 경로가 없을경우 생성
@@ -194,18 +196,22 @@ namespace LootBox_RandomBox_
             {
                 using (MemoryStream memory = new MemoryStream())
                 {
+                    string filePath = img_folder + imgFileName;
+                    imagePictureBox.Image.Save(filePath);
+                    Byte[] bytes = File.ReadAllBytes(img_folder + imgFileName);
+                    MemoryStream ms = new MemoryStream(bytes);
 
+                    Image image = Image.FromStream(ms);
+                    Bitmap newSize = new Bitmap(image, new Size(35, 35));
+
+                    //lootitem = new LootItem(nameTextbox.Text, newSize, decimal.Parse(probabilityTextbox.Text));
+                    lootitem = new LootItem(nameTextbox.Text, newSize, decimal.Parse(probabilityTextbox.Text), filePath);
+                    main.AddItem(lootitem);
+                    /*
                     using (FileStream fs = new FileStream(imgFileName, FileMode.Create, FileAccess.ReadWrite))
                     {
-                        imagePictureBox.Image.Save(img_folder + "\\" + imgFileName);
-                        //Image image = Bitmap.FromFile(img_folder + "\\" + imgFileName);
-                        Byte[] bytes = File.ReadAllBytes("images\\" + imgFileName);
-                        MemoryStream ms = new MemoryStream(bytes);
-                        Image image = Image.FromStream(ms);
-                        Bitmap newSize = new Bitmap(image, new Size(35, 35));
-                        lootitem = new LootItem(nameTextbox.Text, newSize, decimal.Parse(probabilityTextbox.Text));
-                        main.AddItem(lootitem);
                     }
+                    */
                 }
             }
             this.Close();

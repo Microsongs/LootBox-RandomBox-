@@ -40,7 +40,7 @@
             this.language_comboList = new System.Windows.Forms.ComboBox();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.result_dataGridView = new System.Windows.Forms.DataGridView();
-            this.testBtn = new System.Windows.Forms.Button();
+            this.settingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).BeginInit();
@@ -48,9 +48,9 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(47, 623);
+            this.addButton.Location = new System.Drawing.Point(18, 602);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(159, 60);
+            this.addButton.Size = new System.Drawing.Size(140, 60);
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(237, 623);
+            this.deleteButton.Location = new System.Drawing.Point(172, 602);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(159, 60);
+            this.deleteButton.Size = new System.Drawing.Size(140, 60);
             this.deleteButton.TabIndex = 5;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -88,12 +88,13 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(47, 687);
+            this.saveButton.Location = new System.Drawing.Point(86, 677);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(159, 62);
+            this.saveButton.Size = new System.Drawing.Size(140, 60);
             this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // lootBoxImage
             // 
@@ -106,12 +107,13 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(237, 689);
+            this.loadButton.Location = new System.Drawing.Point(259, 677);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(159, 60);
+            this.loadButton.Size = new System.Drawing.Size(140, 60);
             this.loadButton.TabIndex = 8;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // tryButton
             // 
@@ -158,22 +160,21 @@
             this.result_dataGridView.Size = new System.Drawing.Size(455, 504);
             this.result_dataGridView.TabIndex = 12;
             // 
-            // testBtn
+            // settingButton
             // 
-            this.testBtn.Location = new System.Drawing.Point(1291, 643);
-            this.testBtn.Name = "testBtn";
-            this.testBtn.Size = new System.Drawing.Size(132, 69);
-            this.testBtn.TabIndex = 13;
-            this.testBtn.Text = "TestBtn";
-            this.testBtn.UseVisualStyleBackColor = true;
-            this.testBtn.Click += new System.EventHandler(this.TestBtn_Click);
+            this.settingButton.Location = new System.Drawing.Point(327, 602);
+            this.settingButton.Name = "settingButton";
+            this.settingButton.Size = new System.Drawing.Size(140, 60);
+            this.settingButton.TabIndex = 14;
+            this.settingButton.Text = "확률";
+            this.settingButton.UseVisualStyleBackColor = true;
             // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1436, 751);
-            this.Controls.Add(this.testBtn);
+            this.Controls.Add(this.settingButton);
             this.Controls.Add(this.result_dataGridView);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.language_comboList);
@@ -208,7 +209,7 @@
         private System.Windows.Forms.ComboBox language_comboList;
         private System.Windows.Forms.DataGridView itemList_dataGridView;
         private System.Windows.Forms.DataGridView result_dataGridView;
-        private System.Windows.Forms.Button testBtn;
+        private System.Windows.Forms.Button settingButton;
     }
 }
 
