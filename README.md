@@ -17,7 +17,7 @@ robability) to a LootBox and draw it.
 </ul>
 
 ## Progress
-![Honeycam 2019-08-12 16-09-28](https://user-images.githubusercontent.com/38483113/62849699-96022380-bd1b-11e9-985b-01c01512a3a3.gif)
+![랜덤Eng](https://user-images.githubusercontent.com/38483113/62916654-3ca9fb00-bdd4-11e9-865c-55831edd3a27.gif)
 
 ## How to Use
 developing...
@@ -37,7 +37,7 @@ developing...
 </ul>
 
 ## 진척도
-![Honeycam 2019-08-12 15-34-29](https://user-images.githubusercontent.com/38483113/62849587-25f39d80-bd1b-11e9-9862-1f0f169c1a92.gif)
+![랜덤Kor](https://user-images.githubusercontent.com/38483113/62916655-3ca9fb00-bdd4-11e9-985b-11b3d539f3a8.gif)
 
 ## 사용 방법
 제작 중..
@@ -57,7 +57,7 @@ developing...
 </ul>
 
 ## 進捗度
-![Honeycam 2019-08-12 15-54-18](https://user-images.githubusercontent.com/38483113/62849590-2855f780-bd1b-11e9-8264-cd4be91836f8.gif)
+![랜덤Jpn](https://user-images.githubusercontent.com/38483113/62916656-3d429180-bdd4-11e9-89a3-ae89ae557369.gif)
 
 ## 使用方法
 開発中。。
