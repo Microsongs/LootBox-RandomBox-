@@ -39,7 +39,6 @@ namespace LootBox_RandomBox_
         // 명칭 설정
         private void deleteInit(int selected)
         {
-            itemListLabel.Location = new Point(this.Width / 2 - itemListLabel.Width, 10);
             // English
             if (selected == 0)
             {
@@ -70,6 +69,7 @@ namespace LootBox_RandomBox_
                 itemList_dataGridView.Columns[1].HeaderText = "イメージ";
                 itemList_dataGridView.Columns[2].HeaderText = "名前";
             }
+            itemListLabel.Location = new Point(this.Width / 2 - (itemListLabel.Width / 2), 10);
         }
 
         // 데이터그리드뷰 세팅

@@ -140,8 +140,9 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "Load";
                 tryButton.Text = "Try";
                 result_label.Text = "Result";
+                probabilityButton.Text = "Probability";
+                
                 // boxlist
-
                 imgColumn.HeaderText = "Image";
                 imgColumn.Name = "Image";
                 nameColumn.HeaderText = "Name";
@@ -160,6 +161,7 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "불러오기";
                 tryButton.Text = "뽑기";
                 result_label.Text = "결과 목록";
+                probabilityButton.Text = "확률";
                 
                 // boxlist
                 imgColumn.HeaderText = "이미지";
@@ -180,6 +182,7 @@ namespace LootBox_RandomBox_
                 loadButton.Text = "ロード";
                 tryButton.Text = "開く";
                 result_label.Text = "結果リスト";
+                probabilityButton.Text = "確率";
 
                 // boxlist
                 imgColumn.HeaderText = "イメージ";
@@ -214,6 +217,20 @@ namespace LootBox_RandomBox_
                 itemList.RemoveAt(deleteIndex[i]);
                 itemList_dataGridView.Rows.Remove(itemList_dataGridView.Rows[deleteIndex[i]]);
                 deleteIndex.RemoveAt(i);
+            }
+        }
+
+        public void UpdateItemList()
+        {
+            int max = itemList.Count;
+            for(int i=0; i < max; i++)
+            {
+                itemList_dataGridView.Rows.Remove(itemList_dataGridView.Rows[i--]);
+                max--;
+            }
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                itemList_dataGridView.Rows.Add(itemList[i].ItemImage,itemList[i].Name,itemList[i].Probability.ToString("N3") + "%");
             }
         }
 
@@ -331,6 +348,32 @@ namespace LootBox_RandomBox_
                 string[] textValue = File.ReadAllLines()
             }
             */
+        }
+
+        private void ProbabilityButton_Click(object sender, EventArgs e)
+        {
+            if(itemList.Count == 0)
+            {
+                switch (language_comboList.SelectedIndex)
+                {
+                    // English
+                    case 0:
+                        MessageBox.Show("Please Add the Item");
+                        break;
+                    // Korean
+                    case 1:
+                        MessageBox.Show("아이템을 추가해 주세요");
+                        break;
+                    // Japanese
+                    case 2:
+                        MessageBox.Show("アイテムの追加してください。");
+                        break;
+                }
+                return;
+            }
+            ProbabilityBtn probabilityBtn = new ProbabilityBtn(language_comboList.SelectedIndex,ref itemList, this);
+
+            probabilityBtn.ShowDialog();
         }
     }
 }

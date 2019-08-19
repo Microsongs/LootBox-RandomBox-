@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 760);
+            this.ClientSize = new System.Drawing.Size(724, 769);
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.itemListLabel);
             this.Controls.Add(this.itemList_dataGridView);

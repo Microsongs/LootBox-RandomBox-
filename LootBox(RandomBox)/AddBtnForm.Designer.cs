@@ -87,6 +87,7 @@
             this.probabilityTextbox.Name = "probabilityTextbox";
             this.probabilityTextbox.Size = new System.Drawing.Size(337, 62);
             this.probabilityTextbox.TabIndex = 4;
+            this.probabilityTextbox.TextChanged += new System.EventHandler(this.ProbabilityTextbox_TextChanged);
             this.probabilityTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProbabilityTextbox_KeyPress);
             // 
             // imageLabel
@@ -134,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 593);
+            this.ClientSize = new System.Drawing.Size(604, 599);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.imagePictureBox);
             this.Controls.Add(this.imageButton);

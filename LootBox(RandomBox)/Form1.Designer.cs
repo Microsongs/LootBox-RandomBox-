@@ -40,7 +40,7 @@
             this.language_comboList = new System.Windows.Forms.ComboBox();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.result_dataGridView = new System.Windows.Forms.DataGridView();
-            this.settingButton = new System.Windows.Forms.Button();
+            this.probabilityButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).BeginInit();
@@ -160,21 +160,22 @@
             this.result_dataGridView.Size = new System.Drawing.Size(455, 504);
             this.result_dataGridView.TabIndex = 12;
             // 
-            // settingButton
+            // probabilityButton
             // 
-            this.settingButton.Location = new System.Drawing.Point(327, 602);
-            this.settingButton.Name = "settingButton";
-            this.settingButton.Size = new System.Drawing.Size(140, 60);
-            this.settingButton.TabIndex = 14;
-            this.settingButton.Text = "확률";
-            this.settingButton.UseVisualStyleBackColor = true;
+            this.probabilityButton.Location = new System.Drawing.Point(327, 602);
+            this.probabilityButton.Name = "probabilityButton";
+            this.probabilityButton.Size = new System.Drawing.Size(140, 60);
+            this.probabilityButton.TabIndex = 14;
+            this.probabilityButton.Text = "Probability";
+            this.probabilityButton.UseVisualStyleBackColor = true;
+            this.probabilityButton.Click += new System.EventHandler(this.ProbabilityButton_Click);
             // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1436, 751);
-            this.Controls.Add(this.settingButton);
+            this.Controls.Add(this.probabilityButton);
             this.Controls.Add(this.result_dataGridView);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.language_comboList);
@@ -209,7 +210,7 @@
         private System.Windows.Forms.ComboBox language_comboList;
         private System.Windows.Forms.DataGridView itemList_dataGridView;
         private System.Windows.Forms.DataGridView result_dataGridView;
-        private System.Windows.Forms.Button settingButton;
+        private System.Windows.Forms.Button probabilityButton;
     }
 }
 

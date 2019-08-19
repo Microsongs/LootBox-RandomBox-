@@ -35,7 +35,6 @@ namespace LootBox_RandomBox_
         // 초기화
         private void addInit()
         {
-            dataInputLabel.Location = new Point((this.Width / 2) - (dataInputLabel.Width), 10);
             // English
             if (selected == 0)
             {
@@ -69,6 +68,7 @@ namespace LootBox_RandomBox_
                 imageButton.Text = "登録";
                 saveButton.Text = "セーブ";
             }
+            dataInputLabel.Location = new Point((this.Width / 2) - (dataInputLabel.Width / 2), 10);
         }
 
         // 이미지 버튼 등록 메서드
@@ -166,6 +166,24 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+
+            // 확률 범위 초과
+            else if(decimal.Parse(probabilityTextbox.Text) < 0 || decimal.Parse(probabilityTextbox.Text) > 100)
+            {
+                if (selected == 0)
+                {
+                    MessageBox.Show("Please input the right number!", "Error!");
+                }
+                else if (selected == 1)
+                {
+                    MessageBox.Show("올바른 숫자를 넣어주세요", "숫자 오류!");
+                }
+                else
+                {
+                    MessageBox.Show("数字を正しく入力ください。", "エラー!");
+                }
+                return false;
+            }
             else
                 return true;
         }
@@ -217,6 +235,7 @@ namespace LootBox_RandomBox_
             this.Close();
         }
 
+
         private void ProbabilityTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -225,6 +244,11 @@ namespace LootBox_RandomBox_
             }
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
                 e.Handled = true;
+        }
+
+        private void ProbabilityTextbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
