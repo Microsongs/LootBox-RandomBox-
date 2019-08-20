@@ -39,35 +39,34 @@ namespace LootBox_RandomBox_
         // 명칭 설정
         private void deleteInit(int selected)
         {
-            // English
-            if (selected == 0)
+            switch (selected)
             {
-                this.Text = "Delete";
-                itemListLabel.Text = "Item List";
-                EnterButton.Text = "Delete!";
-                itemList_dataGridView.Columns[0].HeaderText = "Check";
-                itemList_dataGridView.Columns[1].HeaderText = "Image";
-                itemList_dataGridView.Columns[2].HeaderText = "Name";
-            }
-            // 한국어
-            else if (selected == 1)
-            {
-                this.Text = "삭제";
-                itemListLabel.Text = "아이템 리스트";
-                EnterButton.Text = "삭제!";
-                itemList_dataGridView.Columns[0].HeaderText = "체크";
-                itemList_dataGridView.Columns[1].HeaderText = "이미지";
-                itemList_dataGridView.Columns[2].HeaderText = "이름";
-            }
-            // 日本語
-            else
-            {
-                this.Text = "デリート";
-                itemListLabel.Text = "アイテムリスト";
-                EnterButton.Text = "デリート!";
-                itemList_dataGridView.Columns[0].HeaderText = "チェック";
-                itemList_dataGridView.Columns[1].HeaderText = "イメージ";
-                itemList_dataGridView.Columns[2].HeaderText = "名前";
+                case 0:
+                    this.Text = "Delete";
+                    itemListLabel.Text = "Item List";
+                    EnterButton.Text = "Delete!";
+                    itemList_dataGridView.Columns[0].HeaderText = "Check";
+                    itemList_dataGridView.Columns[1].HeaderText = "Image";
+                    itemList_dataGridView.Columns[2].HeaderText = "Name";
+                    break;
+
+                case 1:
+                    this.Text = "삭제";
+                    itemListLabel.Text = "아이템 리스트";
+                    EnterButton.Text = "삭제!";
+                    itemList_dataGridView.Columns[0].HeaderText = "체크";
+                    itemList_dataGridView.Columns[1].HeaderText = "이미지";
+                    itemList_dataGridView.Columns[2].HeaderText = "이름";
+                    break;
+
+                case 2:
+                    this.Text = "デリート";
+                    itemListLabel.Text = "アイテムリスト";
+                    EnterButton.Text = "デリート!";
+                    itemList_dataGridView.Columns[0].HeaderText = "チェック";
+                    itemList_dataGridView.Columns[1].HeaderText = "イメージ";
+                    itemList_dataGridView.Columns[2].HeaderText = "名前";
+                    break;
             }
             itemListLabel.Location = new Point(this.Width / 2 - (itemListLabel.Width / 2), 10);
         }

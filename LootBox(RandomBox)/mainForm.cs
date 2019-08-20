@@ -130,67 +130,67 @@ namespace LootBox_RandomBox_
         private void Language_comboList_SelectedIndexChanged(object sender, EventArgs e)
         {
             // English
-            if (language_comboList.SelectedIndex == 0)
-            {
-                this.Text = "LootBox";
-                boxList_label.Text = "Box List";
-                addButton.Text = "Add";
-                deleteButton.Text = "Delete";
-                saveButton.Text = "Save";
-                loadButton.Text = "Load";
-                tryButton.Text = "Try";
-                result_label.Text = "Result";
-                probabilityButton.Text = "Probability";
-                
-                // boxlist
-                imgColumn.HeaderText = "Image";
-                imgColumn.Name = "Image";
-                nameColumn.HeaderText = "Name";
-                nameColumn.Name = "text";
-                probabilityColumn.HeaderText = "Probability";
-                probabilityColumn.Name = "text";
-            }
-            // 한국어
-            else if (language_comboList.SelectedIndex == 1)
-            {
-                this.Text = "랜덤 박스";
-                boxList_label.Text = "내용물";
-                addButton.Text = "추가";
-                deleteButton.Text = "삭제";
-                saveButton.Text = "저장";
-                loadButton.Text = "불러오기";
-                tryButton.Text = "뽑기";
-                result_label.Text = "결과 목록";
-                probabilityButton.Text = "확률";
-                
-                // boxlist
-                imgColumn.HeaderText = "이미지";
-                imgColumn.Name = "Image";
-                nameColumn.HeaderText = "이름";
-                nameColumn.Name = "text";
-                probabilityColumn.HeaderText = "확률";
-                probabilityColumn.Name = "text";
-            }
-            // 日本語
-            else
-            {
-                this.Text = "ランダムボックス";
-                boxList_label.Text = "アイテムリスト";
-                addButton.Text = "追加";
-                deleteButton.Text = "デリート";
-                saveButton.Text = "セーブ";
-                loadButton.Text = "ロード";
-                tryButton.Text = "開く";
-                result_label.Text = "結果リスト";
-                probabilityButton.Text = "確率";
+            switch(language_comboList.SelectedIndex){
+                case 0:
+                    this.Text = "LootBox";
+                    boxList_label.Text = "Box List";
+                    addButton.Text = "Add";
+                    deleteButton.Text = "Delete";
+                    saveButton.Text = "Save";
+                    loadButton.Text = "Load";
+                    tryButton.Text = "Try";
+                    result_label.Text = "Result";
+                    probabilityButton.Text = "Probability";
 
-                // boxlist
-                imgColumn.HeaderText = "イメージ";
-                imgColumn.Name = "Image";
-                nameColumn.HeaderText = "名前";
-                nameColumn.Name = "text";
-                probabilityColumn.HeaderText = "確率";
-                probabilityColumn.Name = "text";
+                    // boxlist
+                    imgColumn.HeaderText = "Image";
+                    imgColumn.Name = "Image";
+                    nameColumn.HeaderText = "Name";
+                    nameColumn.Name = "text";
+                    probabilityColumn.HeaderText = "Probability";
+                    probabilityColumn.Name = "text";
+                    break;
+
+                case 1:
+                    this.Text = "랜덤 박스";
+                    boxList_label.Text = "내용물";
+                    addButton.Text = "추가";
+                    deleteButton.Text = "삭제";
+                    saveButton.Text = "저장";
+                    loadButton.Text = "불러오기";
+                    tryButton.Text = "뽑기";
+                    result_label.Text = "결과 목록";
+                    probabilityButton.Text = "확률";
+
+                    // boxlist
+                    imgColumn.HeaderText = "이미지";
+                    imgColumn.Name = "Image";
+                    nameColumn.HeaderText = "이름";
+                    nameColumn.Name = "text";
+                    probabilityColumn.HeaderText = "확률";
+                    probabilityColumn.Name = "text";
+                    break;
+
+                case 2:
+                    this.Text = "ランダムボックス";
+                    boxList_label.Text = "アイテムリスト";
+                    addButton.Text = "追加";
+                    deleteButton.Text = "デリート";
+                    saveButton.Text = "セーブ";
+                    loadButton.Text = "ロード";
+                    tryButton.Text = "開く";
+                    result_label.Text = "結果リスト";
+                    probabilityButton.Text = "確率";
+
+                    // boxlist
+                    imgColumn.HeaderText = "イメージ";
+                    imgColumn.Name = "Image";
+                    nameColumn.HeaderText = "名前";
+                    nameColumn.Name = "text";
+                    probabilityColumn.HeaderText = "確率";
+                    probabilityColumn.Name = "text";
+                    break;
+
             }
         }
 

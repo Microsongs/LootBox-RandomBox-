@@ -36,37 +36,37 @@ namespace LootBox_RandomBox_
         private void addInit()
         {
             // English
-            if (selected == 0)
+            switch (selected)
             {
-                this.Text = "Add";
-                dataInputLabel.Text = "Enter data";
-                nameLabel.Text = "Name：";
-                probabilityLabel.Text = "Prob : ";
-                imageLabel.Text = "Image : ";
-                imageButton.Text = "Load";
-                saveButton.Text = "Save";
-            }
-            // 한국어
-            else if(selected == 1)
-            {
-                this.Text = "추가";
-                dataInputLabel.Text = "데이터 입력";
-                nameLabel.Text = "이름 : ";
-                probabilityLabel.Text = "확률 : ";
-                imageLabel.Text = "이미지 : ";
-                imageButton.Text = "등록";
-                saveButton.Text = "저장";
-            }
-            // 日本語
-            else
-            {
-                this.Text = "追加";
-                dataInputLabel.Text = "データを追加";
-                nameLabel.Text = "名前 : ";
-                probabilityLabel.Text = "確率 : ";
-                imageLabel.Text = "イメージ : ";
-                imageButton.Text = "登録";
-                saveButton.Text = "セーブ";
+                case 0:
+                    this.Text = "Add";
+                    dataInputLabel.Text = "Enter data";
+                    nameLabel.Text = "Name：";
+                    probabilityLabel.Text = "Prob : ";
+                    imageLabel.Text = "Image : ";
+                    imageButton.Text = "Load";
+                    saveButton.Text = "Save";
+                    break;
+
+                case 1:
+                    this.Text = "추가";
+                    dataInputLabel.Text = "데이터 입력";
+                    nameLabel.Text = "이름 : ";
+                    probabilityLabel.Text = "확률 : ";
+                    imageLabel.Text = "이미지 : ";
+                    imageButton.Text = "등록";
+                    saveButton.Text = "저장";
+                    break;
+
+                case 2:
+                    this.Text = "追加";
+                    dataInputLabel.Text = "データを追加";
+                    nameLabel.Text = "名前 : ";
+                    probabilityLabel.Text = "確率 : ";
+                    imageLabel.Text = "イメージ : ";
+                    imageButton.Text = "登録";
+                    saveButton.Text = "セーブ";
+                    break;
             }
             dataInputLabel.Location = new Point((this.Width / 2) - (dataInputLabel.Width / 2), 10);
         }
@@ -94,17 +94,19 @@ namespace LootBox_RandomBox_
             }
             catch(Exception ex)
             {
-                if(selected == 0)
+                switch (selected)
                 {
-                    MessageBox.Show("Please load Image File!", "Error!");
-                }
-                else if(selected == 1)
-                {
-                    MessageBox.Show("이미지 파일을 불러오세요!", "불러오기 오류!");
-                }
-                else
-                {
-                    MessageBox.Show("イメージファイルをアップロードください。", "ロードエラー!");
+                    case 0:
+                        MessageBox.Show("Please load Image File!", "Error!");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("이미지 파일을 불러오세요!", "불러오기 오류!");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("イメージファイルをアップロードください。", "ロードエラー!");
+                        break;
                 }
             }
             
@@ -116,17 +118,19 @@ namespace LootBox_RandomBox_
             // 제목 유무 확인
             if (nameTextbox.TextLength == 0)
             {
-                if (selected == 0)
+                switch (selected)
                 {
-                    MessageBox.Show("Name Please!", "Error!");
-                }
-                else if (selected == 1)
-                {
-                    MessageBox.Show("이름을 넣어주세요!", "이름 오류!");
-                }
-                else
-                {
-                    MessageBox.Show("名前を入れてください。", "エラー!");
+                    case 0:
+                        MessageBox.Show("Name Please!", "Error!");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("이름을 넣어주세요!", "이름 오류!");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("名前を入れてください。", "エラー!");
+                        break;
                 }
                 return false;
             }
@@ -134,17 +138,19 @@ namespace LootBox_RandomBox_
             // 20바이트 초과 유무 확인
             else if(Encoding.Default.GetBytes(nameTextbox.Text).Length > 20)
             {
-                if (selected == 0)
+                switch (selected)
                 {
-                    MessageBox.Show("Please enter no more than 20 characters!", "Error!");
-                }
-                else if (selected == 1)
-                {
-                    MessageBox.Show("20자 이하로 넣어주세요.", "글자크기 오류!");
-                }
-                else
-                {
-                    MessageBox.Show("20文字以下で入力してください。", "エラー!");
+                    case 0:
+                        MessageBox.Show("Please enter no more than 20 characters!", "Error!");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("20자 이하로 넣어주세요.", "글자크기 오류!");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("20文字以下で入力してください。", "エラー!");
+                        break;
                 }
                 return false;
             }
@@ -152,17 +158,19 @@ namespace LootBox_RandomBox_
             // 확률 입력 확인
             else if (probabilityTextbox.TextLength == 0)
             {
-                if (selected == 0)
+                switch (selected)
                 {
-                    MessageBox.Show("Please input the number!", "Error!");
-                }
-                else if (selected == 1)
-                {
-                    MessageBox.Show("숫자를 정확히 넣어주세요", "숫자 오류!");
-                }
-                else
-                {
-                    MessageBox.Show("数字を正しく入力ください。", "エラー!");
+                    case 0:
+                        MessageBox.Show("Please input the number!", "Error!");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("숫자를 정확히 넣어주세요", "숫자 오류!");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("数字を正しく入力ください。", "エラー!");
+                        break;
                 }
                 return false;
             }
@@ -170,17 +178,19 @@ namespace LootBox_RandomBox_
             // 확률 범위 초과
             else if(decimal.Parse(probabilityTextbox.Text) < 0 || decimal.Parse(probabilityTextbox.Text) > 100)
             {
-                if (selected == 0)
+                switch (selected)
                 {
-                    MessageBox.Show("Please input the right number!", "Error!");
-                }
-                else if (selected == 1)
-                {
-                    MessageBox.Show("올바른 숫자를 넣어주세요", "숫자 오류!");
-                }
-                else
-                {
-                    MessageBox.Show("数字を正しく入力ください。", "エラー!");
+                    case 0:
+                        MessageBox.Show("Please input the right number!", "Error!");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("올바른 숫자를 넣어주세요", "숫자 오류!");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("数字を正しく入力ください。", "エラー!");
+                        break;
                 }
                 return false;
             }
@@ -193,6 +203,7 @@ namespace LootBox_RandomBox_
 
         }
 
+        // 세이브 버튼을 클릭하면 예외(noInputCheck)가 없을 경우 아이템을 추가하는 메서드
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //string img_folder = @"../../images";
@@ -202,6 +213,8 @@ namespace LootBox_RandomBox_
             // 저장 경로가 없을경우 생성
             if (!System.IO.Directory.Exists(img_folder))
                 System.IO.Directory.CreateDirectory(img_folder);
+
+            // 안에 내용이 안들어가거나 내용에 이상이 있을 경우
             if (!noInputCheck())
                 return;
 
@@ -235,7 +248,7 @@ namespace LootBox_RandomBox_
             this.Close();
         }
 
-
+        // 확률에 이상한 숫자가 들어가는 것을 방지
         private void ProbabilityTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

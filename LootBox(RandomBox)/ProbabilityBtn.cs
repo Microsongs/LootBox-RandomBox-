@@ -151,6 +151,7 @@ namespace LootBox_RandomBox_
             enterButton.Location = new Point(this.Width / 2 - enterButton.Width / 2, 335);
         }
 
+        // 입력 버튼을 눌렀을 때 예외처리를 하고, 예외가 없을 경우 확률을 확정하여 mainForm으로 보내준다.
         private void EnterButton_Click(object sender, EventArgs e)
         {
             decimal sum = 0;
@@ -158,12 +159,39 @@ namespace LootBox_RandomBox_
                 decimal temp = -1;
                 if (!decimal.TryParse(itemList_dataGridView.Rows[i].Cells[2].Value.ToString(),out temp))
                 {
-                    MessageBox.Show("숫자가 아닙니다.");
+                    switch (selectedIndex)
+                    {
+                        case 0:
+                            MessageBox.Show("It's not a number");
+                            break;
+
+                        case 1:
+                            MessageBox.Show("숫자가 아닙니다.");
+                            break;
+
+                        case 2:
+                            MessageBox.Show("数字ではありません。");
+                            break;
+                    }
+                    
                     return;
                 }
                 else if(temp < 0 || temp > 100)
                 {
-                    MessageBox.Show("확률 범위 초과!");
+                    switch (selectedIndex)
+                    {
+                        case 0:
+                            MessageBox.Show("Probability range Exceed");
+                            break;
+
+                        case 1:
+                            MessageBox.Show("확률 범위 초과!");
+                            break;
+
+                        case 2:
+                            MessageBox.Show("確率範囲を超えています。");
+                            break;
+                    }
                     return;
                 }
                 else
@@ -173,8 +201,21 @@ namespace LootBox_RandomBox_
             }
             if(sum != 100)
             {
-                Debug.WriteLine(sum);
-                MessageBox.Show("확률이 100%가 되지 않습니다.");
+                switch (selectedIndex)
+                {
+                    case 0:
+                        MessageBox.Show("Please set the probability at 100% ");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("확률이 100%가 되지 않습니다.");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("確率を100%に合わせてください。");
+                        break;
+                }
+
                 return;
             }
 
