@@ -27,6 +27,8 @@ namespace LootBox_RandomBox_
 
         //아이템 리스트
         List<LootItem> itemList = new List<LootItem>();
+
+        // addBtnForm.cs에서 넘겨받은 LootItem을 내 리스트에 추가시킨다.
         public void AddItem(LootItem myitem)
         {
             itemList.Add(myitem);
@@ -199,6 +201,7 @@ namespace LootBox_RandomBox_
 
         }
 
+        // Delete 버튼을 클릭하면 그 form으로 이동한다.
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             DeleteBtnForm deleteBtnForm = new DeleteBtnForm(language_comboList.SelectedIndex, itemList, this);
@@ -220,6 +223,7 @@ namespace LootBox_RandomBox_
             }
         }
 
+        // 확률을 받으면 업데이트시켜준다.
         public void UpdateItemList()
         {
             int max = itemList.Count;
@@ -234,6 +238,7 @@ namespace LootBox_RandomBox_
             }
         }
 
+        // 임시버튼테스트용(삭제)
         private void TestBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show(itemList.Count.ToString());
@@ -350,6 +355,7 @@ namespace LootBox_RandomBox_
             */
         }
 
+        // 아이템이 없을 경우 메세지를 띄우고, 아이템이 있을 경우 확률 설정 페이지를 띄운다.
         private void ProbabilityButton_Click(object sender, EventArgs e)
         {
             if(itemList.Count == 0)

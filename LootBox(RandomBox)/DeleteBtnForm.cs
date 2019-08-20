@@ -97,7 +97,7 @@ namespace LootBox_RandomBox_
             }
         }
 
-        // 체크되어있는 
+        // 삭제할 리스트들을 체크하여 메인폼으로 보내준다.
         private void EnterButton_Click(object sender, EventArgs e)
         {
             List<int> deleteIndex = new List<int>();

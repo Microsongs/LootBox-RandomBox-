@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteBtnForm));
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.itemListLabel = new System.Windows.Forms.Label();
             this.EnterButton = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.itemListLabel);
             this.Controls.Add(this.itemList_dataGridView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeleteBtnForm";
             this.Text = "DeleteBtnForm";
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).EndInit();

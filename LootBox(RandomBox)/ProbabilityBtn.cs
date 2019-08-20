@@ -40,6 +40,7 @@ namespace LootBox_RandomBox_
             ProbInit();
         }
 
+        // 중앙의 dataGridView를 설정해준다.
         void GridViewSetting()
         {
             itemList_dataGridView.Columns.Add(imgColumn);
@@ -87,6 +88,7 @@ namespace LootBox_RandomBox_
             }
         }
 
+        // GridView를 생성하고 표에 넣어준다.
         void ProbInit()
         {
             // gridViewSetting
@@ -119,7 +121,8 @@ namespace LootBox_RandomBox_
             */
         }
         
-
+        // 처음 실행되었을 때 변수들을 맴버 변수에 대입시켜 다른 함수에서 이용하기 용이하게 만들고,
+        // 언어 설정 이후 위치를 잡아준다.
         void Init(int selectedIndex, mainWindow mainForm)
         {
             // 메인 설정
@@ -134,16 +137,19 @@ namespace LootBox_RandomBox_
                 case 0:
                     probabilitySettingLabel.Text = "Probability Setting";
                     enterButton.Text = "OK";
+                    this.Text = "Probability Setting";
                     break;
 
                 case 1:
                     probabilitySettingLabel.Text = "확률 설정";
                     enterButton.Text = "확인";
+                    this.Text = "확률 설정";
                     break;
 
                 case 2:
                     probabilitySettingLabel.Text = "確率設定";
                     enterButton.Text = "オッケー";
+                    this.Text = "確率設定";
                     break;
             }
             //위치 설정

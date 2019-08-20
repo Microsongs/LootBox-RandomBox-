@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProbabilityBtn));
             this.probabilitySettingLabel = new System.Windows.Forms.Label();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.enterButton = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.probabilitySettingLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProbabilityBtn";
             this.Text = "probabilityBtn";
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).EndInit();
