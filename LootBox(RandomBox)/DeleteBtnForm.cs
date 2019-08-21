@@ -86,7 +86,6 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.AllowUserToDeleteRows = false;
             itemList_dataGridView.AllowUserToAddRows = false;
 
-            //itemList_dataGridView.Rows[0].ReadOnly = true;
             itemList_dataGridView.Columns[1].ReadOnly = true;
             itemList_dataGridView.Columns[2].ReadOnly = true;
 
@@ -103,8 +102,6 @@ namespace LootBox_RandomBox_
             List<int> deleteIndex = new List<int>();
             for(int i=0; i<itemList.Count; i++)
             {
-                //System.Diagnostics.Debug.WriteLine(itemList_dataGridView.Rows[i].Cells[0].Value.ToString());
-                //DataGridViewCheckBoxCell checkingCell = itemList_dataGridView.
                 if(itemList_dataGridView.Rows[i].Cells[0].Value.ToString() == "True")
                 {
                     deleteIndex.Add(i);

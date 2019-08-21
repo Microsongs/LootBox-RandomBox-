@@ -11,3 +11,4 @@ D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_
 D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.AddBtnForm.resources
 D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.DeleteBtnForm.resources
 D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.ProbabilityBtn.resources
+D:\셀프 스터디\GUI\LootBox-RandomBox-\LootBox(RandomBox)\obj\Debug\LootBox_RandomBox_.ResultPage.resources

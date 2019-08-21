@@ -112,10 +112,9 @@ namespace LootBox_RandomBox_
             
         }
 
-        // 입력 여부 확인하는 메서드
-        private bool noInputCheck()
+        // 제목 유무 확인
+        private bool CheckName()
         {
-            // 제목 유무 확인
             if (nameTextbox.TextLength == 0)
             {
                 switch (selected)
@@ -134,9 +133,13 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+            return true;
+        }
 
-            // 20바이트 초과 유무 확인
-            else if(Encoding.Default.GetBytes(nameTextbox.Text).Length > 20)
+        // 20바이트 초과 유무 확인
+        private bool CheckLength()
+        {
+            if (Encoding.Default.GetBytes(nameTextbox.Text).Length > 20)
             {
                 switch (selected)
                 {
@@ -154,9 +157,12 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+            return true;
+        }
 
-            // 확률 입력 확인
-            else if (probabilityTextbox.TextLength == 0)
+        private bool CheckProb()
+        {
+            if(probabilityTextbox.TextLength == 0)
             {
                 switch (selected)
                 {
@@ -174,9 +180,13 @@ namespace LootBox_RandomBox_
                 }
                 return false;
             }
+            return true;
+        }
 
-            // 확률 범위 초과
-            else if(decimal.Parse(probabilityTextbox.Text) < 0 || decimal.Parse(probabilityTextbox.Text) > 100)
+        // 확률 범위 확인 메서드
+        private bool CheckProbRange()
+        {
+            if (decimal.Parse(probabilityTextbox.Text) < 0 || decimal.Parse(probabilityTextbox.Text) > 100)
             {
                 switch (selected)
                 {
@@ -198,6 +208,20 @@ namespace LootBox_RandomBox_
                 return true;
         }
 
+        // 입력 여부 확인하는 메서드
+        private bool noInputCheck()
+        {
+
+            if (CheckName() && CheckLength() && CheckProb() && CheckProbRange())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void PictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -206,7 +230,6 @@ namespace LootBox_RandomBox_
         // 세이브 버튼을 클릭하면 예외(noInputCheck)가 없을 경우 아이템을 추가하는 메서드
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //string img_folder = @"../../images";
             string img_folder = "images\\";
             LootItem lootitem;
 
@@ -235,14 +258,8 @@ namespace LootBox_RandomBox_
                     Image image = Image.FromStream(ms);
                     Bitmap newSize = new Bitmap(image, new Size(35, 35));
 
-                    //lootitem = new LootItem(nameTextbox.Text, newSize, decimal.Parse(probabilityTextbox.Text));
-                    lootitem = new LootItem(nameTextbox.Text, newSize, decimal.Parse(probabilityTextbox.Text), filePath);
+                    lootitem = new LootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text), newSize, image, filePath);
                     main.AddItem(lootitem);
-                    /*
-                    using (FileStream fs = new FileStream(imgFileName, FileMode.Create, FileAccess.ReadWrite))
-                    {
-                    }
-                    */
                 }
             }
             this.Close();

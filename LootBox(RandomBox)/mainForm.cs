@@ -48,13 +48,6 @@ namespace LootBox_RandomBox_
             lootBoxImage.Image = Properties.Resources.lootBoxImage;
             lootBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            //임시 추거
-            //Image tempImg = Image.FromFile(@"../../images/tempSword.png");
-            //box_listBox.Items.Add(new LootItem("전사의 검", tempImg, 100.0M));
-            //box_listBox.DrawItem += new DrawItemEventHandler(box_listBox_DrawItem);
-
-            // 아이템 이미지
-
             //추가
             ItemListInit();
             LanguageInit();
@@ -63,16 +56,7 @@ namespace LootBox_RandomBox_
         // 아이템 리스트에 데이터 추가
         private void ItemListInit()
         {
-            //그룹박스
-            //GroupBox checkGroup = new GroupBox();
-            //checkGroup.Controls.Add(checkColumn);
-
-            //맨 위 설정
-            //checkColumn.HeaderText = "삭제";
-            //checkColumn.Name = "column";
-
             // 열에 추가
-            //itemList_dataGridView.Columns.Add(checkColumn);
             itemList_dataGridView.Columns.Add(imgColumn);
             itemList_dataGridView.Columns.Add(nameColumn);
             itemList_dataGridView.Columns.Add(probabilityColumn);
@@ -81,28 +65,11 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.Columns[1].Width = 110;
             itemList_dataGridView.Columns[2].Width = 56;
 
-            /*
-            Image image = Image.FromFile(@"../../images/tempSword.png");
-            int width = 35;
-            int height = 30;
-            Size resize = new Size(width, height);
-            Bitmap newSize = new Bitmap(image,resize);
-            */
-
             itemList_dataGridView.ReadOnly = true;
-            //itemList_dataGridView.Rows[0].ReadOnly = true;
-            //itemList_dataGridView.Columns[1].ReadOnly = true;
-            //itemList_dataGridView.Columns[2].ReadOnly = true;
-            //itemList_dataGridView.Columns[3].ReadOnly = true;
-            //itemList_dataGridView.Rows.Add(1, newSize, "전설의 검", "100");
-            //itemList_dataGridView.Rows.Add(0, newSize, "불꽃의 검", "100");
-            //itemList_dataGridView.Rows.Add(newSize, "ドラゴンソード", "70");
-            //itemList_dataGridView.Rows.Add(newSize, "炎の剣", "30");
 
             itemList_dataGridView.RowHeadersVisible = false;
             itemList_dataGridView.AllowUserToDeleteRows = false;
             itemList_dataGridView.AllowUserToAddRows = false;
-            //itemList_dataGridView.ColumnHeadersVisible = false;
         }
 
         //언어 설정 콤보박스 세팅
@@ -205,7 +172,6 @@ namespace LootBox_RandomBox_
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             DeleteBtnForm deleteBtnForm = new DeleteBtnForm(language_comboList.SelectedIndex, itemList, this);
-            //deleteBtnForm.Location= new Point(Cursor.Position.X, Cursor.Position.Y);
 
             deleteBtnForm.ShowDialog();
         }
@@ -335,24 +301,12 @@ namespace LootBox_RandomBox_
                         MemoryStream ms = new MemoryStream(bytes);
                         Image image = Image.FromStream(ms);
                         Bitmap sizeChangeImage = new Bitmap(image, new Size(35, 35));
-                        temp = (new LootItem(saveFile[i + 0], sizeChangeImage, decimal.Parse(saveFile[i + 2]), saveFile[i + 1]));
+                        temp = (new LootItem(saveFile[i + 0], decimal.Parse(saveFile[i + 2]), sizeChangeImage,image , saveFile[i + 1]));
                         ms.Flush();
                     }
                     AddItem(temp);
                 }
             }
-
-            /*
-            using (FileStream fs = new FileStream("data.txt", FileMode.Append))
-            {
-                if (fs == null)
-                {
-                    MessageBox.Show("불러올 저장 데이터가 없습니다.");
-                    return;
-                }
-                string[] textValue = File.ReadAllLines()
-            }
-            */
         }
 
         // 아이템이 없을 경우 메세지를 띄우고, 아이템이 있을 경우 확률 설정 페이지를 띄운다.
@@ -380,6 +334,63 @@ namespace LootBox_RandomBox_
             ProbabilityBtn probabilityBtn = new ProbabilityBtn(language_comboList.SelectedIndex,ref itemList, this);
 
             probabilityBtn.ShowDialog();
+        }
+
+        // Try버튼을 클릭하였을 때 랜덤 뽑기를 진행
+        private void TryButton_Click(object sender, EventArgs e)
+        {
+            decimal sum = 0;
+
+            foreach(LootItem item in itemList)
+            {
+                sum += item.Probability;
+            }
+            if(sum != 100)
+            {
+                switch (language_comboList.SelectedIndex)
+                {
+                    case 0:
+                        MessageBox.Show("Please make to total probability at 100%");
+                        break;
+
+                    case 1:
+                        MessageBox.Show("확률의 합계를 100%로 맞춰주세요");
+                        break;
+
+                    case 2:
+                        MessageBox.Show("確率の合計を100%にしてください");
+                        break;
+                }
+
+                return;
+            }
+
+            Random r = new Random(DateTime.Now.Millisecond);
+            int randomResult = r.Next(0, 100000);
+
+            decimal min = 0;
+            decimal max = itemList[0].Probability;
+            Debug.WriteLine(randomResult.ToString());
+            for(int i=0; i<itemList.Count; i++)
+            {
+                Debug.WriteLine("min : {0}, prob : {1}", min*1000, itemList[i].Probability*1000);
+                // 성공
+                if(randomResult >= (min * 1000) && randomResult < (max * 1000))
+                {
+                    ResultPage resultPage = new ResultPage(itemList[i],language_comboList.SelectedIndex);
+
+                    resultPage.ShowDialog();
+                    Debug.WriteLine("당첨!");
+                    break;
+                }
+                // 실패
+                else
+                {
+                    Debug.WriteLine("실패");
+                    min = itemList[i].Probability;
+                    max += itemList[i + 1].Probability;
+                }
+            }
         }
     }
 }

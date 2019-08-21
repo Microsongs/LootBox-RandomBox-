@@ -126,6 +126,7 @@
             this.tryButton.TabIndex = 9;
             this.tryButton.Text = "Try";
             this.tryButton.UseVisualStyleBackColor = false;
+            this.tryButton.Click += new System.EventHandler(this.TryButton_Click);
             // 
             // language_comboList
             // 
