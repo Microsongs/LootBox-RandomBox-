@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultPage));
             this.resultNameLabel = new System.Windows.Forms.Label();
             this.resultPictureBox = new System.Windows.Forms.PictureBox();
+            this.closeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,13 +53,25 @@
             this.resultPictureBox.TabIndex = 0;
             this.resultPictureBox.TabStop = false;
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(223, 410);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(141, 42);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // ResultPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 450);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.resultNameLabel);
             this.Controls.Add(this.resultPictureBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResultPage";
             this.Text = "ResultPage";
             ((System.ComponentModel.ISupportInitialize)(this.resultPictureBox)).EndInit();
@@ -70,5 +84,6 @@
 
         private System.Windows.Forms.PictureBox resultPictureBox;
         private System.Windows.Forms.Label resultNameLabel;
+        private System.Windows.Forms.Button closeButton;
     }
 }

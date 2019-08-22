@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,16 +44,25 @@ namespace LootBox_RandomBox_
             {
                 case 0:
                     this.Text = "Result!!";
+                    closeButton.Text = "Close";
                     break;
 
                 case 1:
                     this.Text = "결과!";
+                    closeButton.Text = "닫기";
                     break;
 
                 case 2:
                     this.Text = "結果!!";
+                    closeButton.Text = "閉じる";
                     break;
             }
+            closeButton.Location = new Point(this.Width / 2 - closeButton.Width/ 2, 205);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

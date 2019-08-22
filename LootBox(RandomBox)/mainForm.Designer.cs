@@ -48,7 +48,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(18, 602);
+            this.addButton.Location = new System.Drawing.Point(12, 602);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(140, 60);
             this.addButton.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.result_label.AutoSize = true;
             this.result_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.result_label.Location = new System.Drawing.Point(989, 25);
+            this.result_label.Location = new System.Drawing.Point(950, 25);
             this.result_label.Name = "result_label";
             this.result_label.Size = new System.Drawing.Size(98, 33);
             this.result_label.TabIndex = 4;
@@ -78,7 +78,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(172, 602);
+            this.deleteButton.Location = new System.Drawing.Point(171, 602);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(140, 60);
             this.deleteButton.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(86, 677);
+            this.saveButton.Location = new System.Drawing.Point(72, 677);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(140, 60);
             this.saveButton.TabIndex = 6;
@@ -98,9 +98,9 @@
             // 
             // lootBoxImage
             // 
-            this.lootBoxImage.Location = new System.Drawing.Point(500, 77);
+            this.lootBoxImage.Location = new System.Drawing.Point(491, 77);
             this.lootBoxImage.Name = "lootBoxImage";
-            this.lootBoxImage.Size = new System.Drawing.Size(437, 529);
+            this.lootBoxImage.Size = new System.Drawing.Size(399, 507);
             this.lootBoxImage.TabIndex = 7;
             this.lootBoxImage.TabStop = false;
             this.lootBoxImage.Click += new System.EventHandler(this.LootBoxImage_Click);
@@ -154,7 +154,7 @@
             // result_dataGridView
             // 
             this.result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.result_dataGridView.Location = new System.Drawing.Point(969, 77);
+            this.result_dataGridView.Location = new System.Drawing.Point(956, 77);
             this.result_dataGridView.Name = "result_dataGridView";
             this.result_dataGridView.RowHeadersWidth = 82;
             this.result_dataGridView.RowTemplate.Height = 33;
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1436, 751);
+            this.ClientSize = new System.Drawing.Size(1574, 751);
             this.Controls.Add(this.probabilityButton);
             this.Controls.Add(this.result_dataGridView);
             this.Controls.Add(this.itemList_dataGridView);

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -25,8 +26,15 @@ namespace LootBox_RandomBox_
         // 확률
         DataGridViewTextBoxColumn probabilityColumn = new DataGridViewTextBoxColumn();
 
+        // resultListInit
+        DataGridViewImageColumn resultImg = new DataGridViewImageColumn();
+        DataGridViewTextBoxColumn resultName = new DataGridViewTextBoxColumn();
+
         //아이템 리스트
         List<LootItem> itemList = new List<LootItem>();
+
+        //결과 리스트
+        List<ResultLootItem> resultList = new List<ResultLootItem>();
 
         // addBtnForm.cs에서 넘겨받은 LootItem을 내 리스트에 추가시킨다.
         public void AddItem(LootItem myitem)
@@ -48,9 +56,27 @@ namespace LootBox_RandomBox_
             lootBoxImage.Image = Properties.Resources.lootBoxImage;
             lootBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            this.Width = 35 + itemList_dataGridView.Width + lootBoxImage.Width + result_dataGridView.Width;
+
+            // 위치 설정 함수
+            setLocation();
+
             //추가
             ItemListInit();
             LanguageInit();
+            resultGridViewInit();
+        }
+        
+        //위치 설정 함수
+        void setLocation()
+        {
+            itemList_dataGridView.Location = new Point(5, 40);
+            lootBoxImage.Location = new Point(10 + itemList_dataGridView.Width, 40);
+            result_dataGridView.Location = new Point(15 + itemList_dataGridView.Width + lootBoxImage.Width, 40);
+            
+            tryButton.Location = new Point(this.Width / 2 - tryButton.Width / 2, 315);
+            boxList_label.Location = new Point(5, 20);
+            result_label.Location = new Point(15 + itemList_dataGridView.Width + lootBoxImage.Width, 20);
         }
 
         // 아이템 리스트에 데이터 추가
@@ -62,7 +88,7 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.Columns.Add(probabilityColumn);
 
             itemList_dataGridView.Columns[0].Width = 60;
-            itemList_dataGridView.Columns[1].Width = 110;
+            itemList_dataGridView.Columns[1].Width = 109;
             itemList_dataGridView.Columns[2].Width = 56;
 
             itemList_dataGridView.ReadOnly = true;
@@ -70,6 +96,22 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.RowHeadersVisible = false;
             itemList_dataGridView.AllowUserToDeleteRows = false;
             itemList_dataGridView.AllowUserToAddRows = false;
+        }
+
+        // 결과 리스트 초기화
+        private void resultGridViewInit()
+        {
+            result_dataGridView.Columns.Add(resultImg);
+            result_dataGridView.Columns.Add(resultName);
+
+            result_dataGridView.Columns[0].Width = 60;
+            result_dataGridView.Columns[1].Width = 165;
+
+            result_dataGridView.ReadOnly = true;
+
+            result_dataGridView.RowHeadersVisible = false;
+            result_dataGridView.AllowUserToDeleteRows = false;
+            result_dataGridView.AllowUserToAddRows = false;
         }
 
         //언어 설정 콤보박스 세팅
@@ -118,6 +160,10 @@ namespace LootBox_RandomBox_
                     nameColumn.Name = "text";
                     probabilityColumn.HeaderText = "Probability";
                     probabilityColumn.Name = "text";
+
+                    // resultList
+                    resultImg.HeaderText = "Image";
+                    resultName.HeaderText = "Name";
                     break;
 
                 case 1:
@@ -138,6 +184,10 @@ namespace LootBox_RandomBox_
                     nameColumn.Name = "text";
                     probabilityColumn.HeaderText = "확률";
                     probabilityColumn.Name = "text";
+
+                    // resultList
+                    resultImg.HeaderText = "이미지";
+                    resultName.HeaderText = "이름";
                     break;
 
                 case 2:
@@ -158,6 +208,10 @@ namespace LootBox_RandomBox_
                     nameColumn.Name = "text";
                     probabilityColumn.HeaderText = "確率";
                     probabilityColumn.Name = "text";
+
+                    // resultList
+                    resultImg.HeaderText = "이미지";
+                    resultName.HeaderText = "이름";
                     break;
 
             }
@@ -377,10 +431,20 @@ namespace LootBox_RandomBox_
                 // 성공
                 if(randomResult >= (min * 1000) && randomResult < (max * 1000))
                 {
-                    ResultPage resultPage = new ResultPage(itemList[i],language_comboList.SelectedIndex);
+                    Debug.WriteLine("당첨!");
+                    if (itemList[i].ImgFIlePath.Equals("NULL")) {
+                        resultList.Add(new ResultLootItem(itemList[i].Name,itemList[i].Probability));
+                    }
+                    else
+                    {
+                        resultList.Add(new ResultLootItem(itemList[i].Name, itemList[i].Probability, itemList[i].ItemImage, itemList[i].OriginalImage, itemList[i].ImgFIlePath));
+                    }
+                    result_dataGridView.Rows.Add(itemList[i].ItemImage, itemList[i].Name);
+
+                    ResultPage resultPage = new ResultPage(itemList[i], language_comboList.SelectedIndex);
 
                     resultPage.ShowDialog();
-                    Debug.WriteLine("당첨!");
+
                     break;
                 }
                 // 실패

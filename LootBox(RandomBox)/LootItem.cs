@@ -10,11 +10,11 @@ namespace LootBox_RandomBox_
     public class LootItem
     {
         // 이름, 사진, 확률
-        string name;
-        Image itemImage;
-        Image originalImage;
-        decimal probability;
-        string imgFilePath;
+        protected string name;
+        protected Image itemImage;
+        protected Image originalImage;
+        protected decimal probability;
+        protected string imgFilePath;
 
         public LootItem(string name, decimal probability, Image itemImage, Image originalImage, string imgFilePath)
         {
@@ -23,6 +23,12 @@ namespace LootBox_RandomBox_
             this.itemImage = itemImage;
             this.originalImage = originalImage;
             this.imgFilePath = imgFilePath;
+        }
+        public LootItem(string name, decimal probability)
+        {
+            this.name = name;
+            this.probability = probability;
+            this.imgFilePath = "";
         }
 
         public Image OriginalImage
@@ -35,12 +41,7 @@ namespace LootBox_RandomBox_
             get { return imgFilePath; }
             set { imgFilePath = value; }
         }
-        public LootItem(string name, decimal probability)
-        {
-            this.name = name;
-            this.probability = probability;
-            this.imgFilePath = "";
-        }
+
 
         public string Name
         {

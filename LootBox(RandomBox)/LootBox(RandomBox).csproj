@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultLootItem.cs" />
     <Compile Include="ResultPage.cs">
       <SubType>Form</SubType>
     </Compile>
