@@ -38,6 +38,8 @@ namespace LootBox_RandomBox_
             Init(selectedIndex, mainForm);
 
             ProbInit();
+
+            totalLabelSetting();
         }
 
         // 중앙의 dataGridView를 설정해준다.
@@ -119,6 +121,19 @@ namespace LootBox_RandomBox_
                 }
             }
             */
+        }
+
+        decimal totalProbability()
+        {
+            decimal total = 0;
+            Debug.WriteLine(itemList_dataGridView.Rows.Count);
+            for (int i = 0; i < itemList_dataGridView.Rows.Count; i++)
+            {
+                Debug.WriteLine(decimal.Parse(itemList_dataGridView.Rows[i].Cells[2].Value.ToString()));
+                total += decimal.Parse(itemList_dataGridView.Rows[i].Cells[2].Value.ToString());
+            }
+            
+            return total;
         }
         
         // 처음 실행되었을 때 변수들을 맴버 변수에 대입시켜 다른 함수에서 이용하기 용이하게 만들고,
@@ -234,9 +249,27 @@ namespace LootBox_RandomBox_
             this.Close();
         }
 
+        void totalLabelSetting()
+        {
+            switch (selectedIndex)
+            {
+                case 0:
+                    totalLabel.Text = "total : " + totalProbability();
+                    break;
+
+                case 1:
+                    totalLabel.Text = "합계 : " + totalProbability();
+                    break;
+
+                case 2:
+                    totalLabel.Text = "合計 : " + totalProbability();
+                    break;
+            }
+        }
+
         private void ItemList_dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
+            totalLabelSetting();
         }
     }
 }

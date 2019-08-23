@@ -1,12 +1,18 @@
-﻿F
-images\FlameSword.PNG
-25.500
-W
+﻿水の精霊
 images\WaterElemental.PNG
-36.700
-L
+15
+毒の精霊
+images\PoisionElemental.PNG
+15
+石の精霊
+images\Stone Elemental.PNG
+15
+フレームソード
+images\FlameSword.PNG
+15
+ライトニングソード
 images\LightningSword.PNG
-33.300
-D
+15
+ドラゴンジェー
 images\dragon.PNG
-4.500
+25

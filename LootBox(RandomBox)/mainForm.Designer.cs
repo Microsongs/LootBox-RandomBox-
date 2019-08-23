@@ -39,11 +39,14 @@
             this.tryButton = new System.Windows.Forms.Button();
             this.language_comboList = new System.Windows.Forms.ComboBox();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
-            this.result_dataGridView = new System.Windows.Forms.DataGridView();
+            this.orderResult_dataGridView = new System.Windows.Forms.DataGridView();
             this.probabilityButton = new System.Windows.Forms.Button();
+            this.resultChangeBtn = new System.Windows.Forms.Button();
+            this.countResult_dataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderResult_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countResult_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // addButton
@@ -151,15 +154,15 @@
             this.itemList_dataGridView.Size = new System.Drawing.Size(455, 504);
             this.itemList_dataGridView.TabIndex = 11;
             // 
-            // result_dataGridView
+            // orderResult_dataGridView
             // 
-            this.result_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.result_dataGridView.Location = new System.Drawing.Point(956, 77);
-            this.result_dataGridView.Name = "result_dataGridView";
-            this.result_dataGridView.RowHeadersWidth = 82;
-            this.result_dataGridView.RowTemplate.Height = 33;
-            this.result_dataGridView.Size = new System.Drawing.Size(455, 504);
-            this.result_dataGridView.TabIndex = 12;
+            this.orderResult_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderResult_dataGridView.Location = new System.Drawing.Point(956, 77);
+            this.orderResult_dataGridView.Name = "orderResult_dataGridView";
+            this.orderResult_dataGridView.RowHeadersWidth = 82;
+            this.orderResult_dataGridView.RowTemplate.Height = 33;
+            this.orderResult_dataGridView.Size = new System.Drawing.Size(455, 504);
+            this.orderResult_dataGridView.TabIndex = 12;
             // 
             // probabilityButton
             // 
@@ -171,13 +174,38 @@
             this.probabilityButton.UseVisualStyleBackColor = true;
             this.probabilityButton.Click += new System.EventHandler(this.ProbabilityButton_Click);
             // 
+            // resultChangeBtn
+            // 
+            this.resultChangeBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.resultChangeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultChangeBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.resultChangeBtn.Location = new System.Drawing.Point(1160, 9);
+            this.resultChangeBtn.Name = "resultChangeBtn";
+            this.resultChangeBtn.Size = new System.Drawing.Size(306, 62);
+            this.resultChangeBtn.TabIndex = 15;
+            this.resultChangeBtn.Text = "Change";
+            this.resultChangeBtn.UseVisualStyleBackColor = false;
+            this.resultChangeBtn.Click += new System.EventHandler(this.ResultChangeBtn_Click);
+            // 
+            // countResult_dataGridView
+            // 
+            this.countResult_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.countResult_dataGridView.Location = new System.Drawing.Point(1094, 80);
+            this.countResult_dataGridView.Name = "countResult_dataGridView";
+            this.countResult_dataGridView.RowHeadersWidth = 82;
+            this.countResult_dataGridView.RowTemplate.Height = 33;
+            this.countResult_dataGridView.Size = new System.Drawing.Size(455, 504);
+            this.countResult_dataGridView.TabIndex = 16;
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 751);
+            this.Controls.Add(this.countResult_dataGridView);
+            this.Controls.Add(this.resultChangeBtn);
             this.Controls.Add(this.probabilityButton);
-            this.Controls.Add(this.result_dataGridView);
+            this.Controls.Add(this.orderResult_dataGridView);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.language_comboList);
             this.Controls.Add(this.tryButton);
@@ -191,9 +219,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainWindow";
             this.Text = "LootBox(RandomBox)";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.result_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderResult_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countResult_dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,8 +240,10 @@
         private System.Windows.Forms.Button tryButton;
         private System.Windows.Forms.ComboBox language_comboList;
         private System.Windows.Forms.DataGridView itemList_dataGridView;
-        private System.Windows.Forms.DataGridView result_dataGridView;
+        private System.Windows.Forms.DataGridView orderResult_dataGridView;
         private System.Windows.Forms.Button probabilityButton;
+        private System.Windows.Forms.Button resultChangeBtn;
+        private System.Windows.Forms.DataGridView countResult_dataGridView;
     }
 }
 

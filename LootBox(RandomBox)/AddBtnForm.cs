@@ -232,6 +232,7 @@ namespace LootBox_RandomBox_
         {
             string img_folder = "images\\";
             LootItem lootitem;
+            ResultLootItem resultItem;
 
             // 저장 경로가 없을경우 생성
             if (!System.IO.Directory.Exists(img_folder))
@@ -244,7 +245,8 @@ namespace LootBox_RandomBox_
             if (imgFileName == null)
             {
                 lootitem = new LootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text));
-                main.AddItem(lootitem);
+                resultItem = new ResultLootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text));
+                main.AddItem(lootitem, resultItem);
             }
             else
             {
@@ -259,7 +261,8 @@ namespace LootBox_RandomBox_
                     Bitmap newSize = new Bitmap(image, new Size(35, 35));
 
                     lootitem = new LootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text), newSize, image, filePath);
-                    main.AddItem(lootitem);
+                    resultItem = new ResultLootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text), newSize, image, filePath);
+                    main.AddItem(lootitem, resultItem);
                 }
             }
             this.Close();

@@ -32,6 +32,7 @@
             this.probabilitySettingLabel = new System.Windows.Forms.Label();
             this.itemList_dataGridView = new System.Windows.Forms.DataGridView();
             this.enterButton = new System.Windows.Forms.Button();
+            this.totalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,11 +67,22 @@
             this.enterButton.UseVisualStyleBackColor = true;
             this.enterButton.Click += new System.EventHandler(this.EnterButton_Click);
             // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLabel.Location = new System.Drawing.Point(429, 644);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(156, 37);
+            this.totalLabel.TabIndex = 3;
+            this.totalLabel.Text = "totalLabel";
+            // 
             // ProbabilityBtn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 729);
+            this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.itemList_dataGridView);
             this.Controls.Add(this.probabilitySettingLabel);
@@ -88,5 +100,6 @@
         private System.Windows.Forms.Label probabilitySettingLabel;
         private System.Windows.Forms.DataGridView itemList_dataGridView;
         private System.Windows.Forms.Button enterButton;
+        private System.Windows.Forms.Label totalLabel;
     }
 }

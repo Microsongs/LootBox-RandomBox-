@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LootBox_RandomBox_
 {
-    class ResultLootItem : LootItem
+    public class ResultLootItem : LootItem
     {
         int count;
         public ResultLootItem(string name, decimal probability, Image itemImage, Image originalImage, string imgFilePath) : base(name, probability, itemImage, originalImage, imgFilePath)

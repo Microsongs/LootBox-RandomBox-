@@ -62,6 +62,7 @@
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.Button1_Click);
+            this.closeButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CloseButton_KeyDown);
             // 
             // ResultPage
             // 

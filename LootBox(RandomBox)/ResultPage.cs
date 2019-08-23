@@ -64,5 +64,13 @@ namespace LootBox_RandomBox_
         {
             this.Close();
         }
+
+        private void CloseButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                this.Button1_Click(sender, e);
+            }
+        }
     }
 }
