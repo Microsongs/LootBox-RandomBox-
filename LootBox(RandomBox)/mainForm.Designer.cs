@@ -43,6 +43,7 @@
             this.probabilityButton = new System.Windows.Forms.Button();
             this.resultChangeBtn = new System.Windows.Forms.Button();
             this.countResult_dataGridView = new System.Windows.Forms.DataGridView();
+            this.resetBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lootBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderResult_dataGridView)).BeginInit();
@@ -136,7 +137,7 @@
             this.language_comboList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.language_comboList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.language_comboList.FormattingEnabled = true;
-            this.language_comboList.Location = new System.Drawing.Point(1023, 642);
+            this.language_comboList.Location = new System.Drawing.Point(1155, 642);
             this.language_comboList.Name = "language_comboList";
             this.language_comboList.Size = new System.Drawing.Size(256, 41);
             this.language_comboList.TabIndex = 10;
@@ -197,11 +198,22 @@
             this.countResult_dataGridView.Size = new System.Drawing.Size(455, 504);
             this.countResult_dataGridView.TabIndex = 16;
             // 
+            // resetBtn
+            // 
+            this.resetBtn.Location = new System.Drawing.Point(956, 642);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(175, 51);
+            this.resetBtn.TabIndex = 17;
+            this.resetBtn.Text = "resetBtn";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 751);
+            this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.countResult_dataGridView);
             this.Controls.Add(this.resultChangeBtn);
             this.Controls.Add(this.probabilityButton);
@@ -244,6 +256,7 @@
         private System.Windows.Forms.Button probabilityButton;
         private System.Windows.Forms.Button resultChangeBtn;
         private System.Windows.Forms.DataGridView countResult_dataGridView;
+        private System.Windows.Forms.Button resetBtn;
     }
 }
 

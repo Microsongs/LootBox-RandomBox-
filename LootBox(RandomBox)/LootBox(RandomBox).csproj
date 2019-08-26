@@ -59,6 +59,7 @@
     <Compile Include="DeleteBtnForm.Designer.cs">
       <DependentUpon>DeleteBtnForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Language.cs" />
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -69,19 +69,19 @@ namespace LootBox_RandomBox_
 
             switch (selectedIndex)
             {
-                case 0:
+                case Language.english:
                     itemList_dataGridView.Columns[0].HeaderText = "Image";
                     itemList_dataGridView.Columns[1].HeaderText = "Name";
                     itemList_dataGridView.Columns[2].HeaderText = "Probability";
                     //itemList_dataGridView.Columns[3].HeaderText = "Setting";
                     break;
-                case 1:
+                case Language.korean:
                     itemList_dataGridView.Columns[0].HeaderText = "이미지";
                     itemList_dataGridView.Columns[1].HeaderText = "이름";
                     itemList_dataGridView.Columns[2].HeaderText = "확률";
                     //itemList_dataGridView.Columns[3].HeaderText = "설정";
                     break;
-                case 2:
+                case Language.japanese:
                     itemList_dataGridView.Columns[0].HeaderText = "イメージ";
                     itemList_dataGridView.Columns[1].HeaderText = "名前";
                     itemList_dataGridView.Columns[2].HeaderText = "確率";
@@ -101,29 +101,10 @@ namespace LootBox_RandomBox_
                 //itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability,"Setting");
                 itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability.ToString("N3"));
             }
-            
-            /*
-            for(int i=0; i < itemList.Count; i++)
-            {
-                switch(selectedIndex)
-                {
-                    case 0:
-                        itemList_dataGridView[3, i].Value = "Setting";
-                        break;
-
-                    case 1:
-                        itemList_dataGridView[3, i].Value = "변경";
-                        break;
-
-                    case 2:
-                        itemList_dataGridView[3, i].Value = "変更";
-                        break;
-                }
-            }
-            */
         }
 
-        decimal totalProbability()
+        // 확률의 총합을 구해주는 함수
+        decimal TotalProbability()
         {
             decimal total = 0;
             Debug.WriteLine(itemList_dataGridView.Rows.Count);
@@ -149,19 +130,19 @@ namespace LootBox_RandomBox_
             switch (selectedIndex)
             {
                 // English
-                case 0:
+                case Language.english:
                     probabilitySettingLabel.Text = "Probability Setting";
                     enterButton.Text = "OK";
                     this.Text = "Probability Setting";
                     break;
 
-                case 1:
+                case Language.korean:
                     probabilitySettingLabel.Text = "확률 설정";
                     enterButton.Text = "확인";
                     this.Text = "확률 설정";
                     break;
 
-                case 2:
+                case Language.japanese:
                     probabilitySettingLabel.Text = "確率設定";
                     enterButton.Text = "オッケー";
                     this.Text = "確率設定";
@@ -172,6 +153,72 @@ namespace LootBox_RandomBox_
             enterButton.Location = new Point(this.Width / 2 - enterButton.Width / 2, 335);
         }
 
+        // 숫자가 입력되지 않았을 때의 메세지박스
+        private void NoNumberInputMessageBox()
+        {
+            switch (selectedIndex)
+            {
+                case Language.english:
+                    MessageBox.Show("It's not a number");
+                    break;
+
+                case Language.korean:
+                    MessageBox.Show("숫자가 아닙니다.");
+                    break;
+
+                case Language.japanese:
+                    MessageBox.Show("数字ではありません。");
+                    break;
+            }
+        }
+
+        // 숫자 범위 초과를 확인하는 메서드
+        private bool NumberRangeOver(decimal num)
+        {
+            if(num < 0 || num > 100)
+            {
+                switch (selectedIndex)
+                {
+                    case Language.english:
+                        MessageBox.Show("Probability range Exceed");
+                        break;
+
+                    case Language.korean:
+                        MessageBox.Show("확률 범위 초과!");
+                        break;
+
+                    case Language.japanese:
+                        MessageBox.Show("確率範囲を超えています。");
+                        break;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private bool SumOverCheck(decimal sum)
+        {
+            if(sum > 100)
+            {
+                switch (selectedIndex)
+                {
+                    case Language.english:
+                        MessageBox.Show("Please set the probability to 100% or less");
+                        break;
+
+                    case Language.korean:
+                        MessageBox.Show("확률을 100% 이하로 맞춰주세요.");
+                        break;
+
+                    case Language.japanese:
+                        MessageBox.Show("確率を100%以下に合わせてください。");
+                        break;
+                }
+                return true;
+            }
+            return false;
+        }
+
         // 입력 버튼을 눌렀을 때 예외처리를 하고, 예외가 없을 경우 확률을 확정하여 mainForm으로 보내준다.
         private void EnterButton_Click(object sender, EventArgs e)
         {
@@ -180,39 +227,11 @@ namespace LootBox_RandomBox_
                 decimal temp = -1;
                 if (!decimal.TryParse(itemList_dataGridView.Rows[i].Cells[2].Value.ToString(),out temp))
                 {
-                    switch (selectedIndex)
-                    {
-                        case 0:
-                            MessageBox.Show("It's not a number");
-                            break;
-
-                        case 1:
-                            MessageBox.Show("숫자가 아닙니다.");
-                            break;
-
-                        case 2:
-                            MessageBox.Show("数字ではありません。");
-                            break;
-                    }
-                    
+                    NoNumberInputMessageBox();
                     return;
                 }
-                else if(temp < 0 || temp > 100)
+                else if(NumberRangeOver(temp))
                 {
-                    switch (selectedIndex)
-                    {
-                        case 0:
-                            MessageBox.Show("Probability range Exceed");
-                            break;
-
-                        case 1:
-                            MessageBox.Show("확률 범위 초과!");
-                            break;
-
-                        case 2:
-                            MessageBox.Show("確率範囲を超えています。");
-                            break;
-                    }
                     return;
                 }
                 else
@@ -220,23 +239,8 @@ namespace LootBox_RandomBox_
                     sum += temp;
                 }
             }
-            if(sum != 100)
+            if(SumOverCheck(sum))
             {
-                switch (selectedIndex)
-                {
-                    case 0:
-                        MessageBox.Show("Please set the probability at 100% ");
-                        break;
-
-                    case 1:
-                        MessageBox.Show("확률이 100%가 되지 않습니다.");
-                        break;
-
-                    case 2:
-                        MessageBox.Show("確率を100%に合わせてください。");
-                        break;
-                }
-
                 return;
             }
 
@@ -253,16 +257,16 @@ namespace LootBox_RandomBox_
         {
             switch (selectedIndex)
             {
-                case 0:
-                    totalLabel.Text = "total : " + totalProbability();
+                case Language.english:
+                    totalLabel.Text = "total : " + TotalProbability();
                     break;
 
-                case 1:
-                    totalLabel.Text = "합계 : " + totalProbability();
+                case Language.korean:
+                    totalLabel.Text = "합계 : " + TotalProbability();
                     break;
 
-                case 2:
-                    totalLabel.Text = "合計 : " + totalProbability();
+                case Language.japanese:
+                    totalLabel.Text = "合計 : " + TotalProbability();
                     break;
             }
         }

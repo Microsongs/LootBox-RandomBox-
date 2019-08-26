@@ -25,13 +25,13 @@ namespace LootBox_RandomBox_
         void PrintText(LootItem item)
         {
             resultNameLabel.Text = item.Name;
-            resultNameLabel.Location = new Point(this.Width / 2 - resultNameLabel.Width / 2, 165);
+            resultNameLabel.Location = new Point(this.Width / 2 - resultNameLabel.Width / 2, this.Height/100*80);
         }
 
         // 이미지 출력
         void PrintImage(LootItem item)
         {
-            resultPictureBox.Location = new Point(this.Width / 2 - resultPictureBox.Width / 2, 10);
+            resultPictureBox.Location = new Point(this.Width / 2 - resultPictureBox.Width / 2, this.Height/100*5);
 
             resultPictureBox.Image = item.OriginalImage;
             resultPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -42,22 +42,22 @@ namespace LootBox_RandomBox_
         {
             switch (selected)
             {
-                case 0:
+                case Language.english:
                     this.Text = "Result!!";
                     closeButton.Text = "Close";
                     break;
 
-                case 1:
+                case Language.korean:
                     this.Text = "결과!";
                     closeButton.Text = "닫기";
                     break;
 
-                case 2:
+                case Language.japanese:
                     this.Text = "結果!!";
                     closeButton.Text = "閉じる";
                     break;
             }
-            closeButton.Location = new Point(this.Width / 2 - closeButton.Width/ 2, 205);
+            closeButton.Location = new Point(this.Width / 2 - closeButton.Width/ 2, this.Height/100*100);
         }
 
         private void Button1_Click(object sender, EventArgs e)

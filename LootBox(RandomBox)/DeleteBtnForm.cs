@@ -41,7 +41,7 @@ namespace LootBox_RandomBox_
         {
             switch (selected)
             {
-                case 0:
+                case Language.english:
                     this.Text = "Delete";
                     itemListLabel.Text = "Item List";
                     EnterButton.Text = "Delete!";
@@ -50,7 +50,7 @@ namespace LootBox_RandomBox_
                     itemList_dataGridView.Columns[2].HeaderText = "Name";
                     break;
 
-                case 1:
+                case Language.korean:
                     this.Text = "삭제";
                     itemListLabel.Text = "아이템 리스트";
                     EnterButton.Text = "삭제!";
@@ -59,7 +59,7 @@ namespace LootBox_RandomBox_
                     itemList_dataGridView.Columns[2].HeaderText = "이름";
                     break;
 
-                case 2:
+                case Language.japanese:
                     this.Text = "デリート";
                     itemListLabel.Text = "アイテムリスト";
                     EnterButton.Text = "デリート!";

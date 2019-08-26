@@ -16,6 +16,7 @@ namespace LootBox_RandomBox_
 {
     public partial class mainWindow : Form
     {
+
         // ItemListInit
         // 콤보박스
         DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
@@ -35,18 +36,21 @@ namespace LootBox_RandomBox_
         DataGridViewImageColumn resultOrderImg = new DataGridViewImageColumn();
         DataGridViewTextBoxColumn resultOrderName = new DataGridViewTextBoxColumn();
 
-        //아이템 리스트
+        // 아이템 리스트
         List<LootItem> itemList = new List<LootItem>();
-        //카운트 결과 리스트
-        List<ResultLootItem> resultCountList = new List<ResultLootItem>();
+        // 카운트 결과 리스트
+        List<ResultLootItem> countResultList = new List<ResultLootItem>();
         // 순서 결과 리스트
-        List<ResultLootItem> resultOrderList = new List<ResultLootItem>();
+        List<ResultLootItem> orderResultList = new List<ResultLootItem>();
+
+        // 꽝 전용 리스트
+        ResultLootItem loseItem;
 
         // addBtnForm.cs에서 넘겨받은 LootItem을 내 리스트에 추가시킨다.
         public void AddItem(LootItem myitem, ResultLootItem resultItem)
         {
             itemList.Add(myitem);
-            resultCountList.Add(resultItem);
+            countResultList.Add(resultItem);
             
             itemList_dataGridView.Rows.Add(myitem.ItemImage, myitem.Name, myitem.Probability.ToString("N3")+"%");
             countResult_dataGridView.Rows.Add(resultItem.ItemImage, resultItem.Name, resultItem.Count);
@@ -89,6 +93,9 @@ namespace LootBox_RandomBox_
             boxList_label.Location = new Point(5, 20);
             result_label.Location = new Point(15 + itemList_dataGridView.Width + lootBoxImage.Width, 20);
             resultChangeBtn.Location = new Point(25 + result_label.Location.X + result_label.Width, 5);
+
+            resetBtn.Location = new Point(lootBoxImage.Location.X + lootBoxImage.Width, 10 + orderResult_dataGridView.Location.Y + orderResult_dataGridView.Height);
+            language_comboList.Location = new Point(5 + resetBtn.Location.X + resetBtn.Width, 10 + orderResult_dataGridView.Location.Y + orderResult_dataGridView.Height);
         }
 
         // 아이템 리스트에 데이터 추가
@@ -99,9 +106,15 @@ namespace LootBox_RandomBox_
             itemList_dataGridView.Columns.Add(nameColumn);
             itemList_dataGridView.Columns.Add(probabilityColumn);
 
-            itemList_dataGridView.Columns[0].Width = 60;
-            itemList_dataGridView.Columns[1].Width = 109;
-            itemList_dataGridView.Columns[2].Width = 56;
+            double width = (double)itemList_dataGridView.Width;
+
+            itemList_dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            itemList_dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            itemList_dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+            //itemList_dataGridView.Columns[0].Width = itemList_dataGridView.Width / 100 * 25;
+            //itemList_dataGridView.Columns[1].Width = itemList_dataGridView.Width / 100 * 50;
+            //itemList_dataGridView.Columns[2].Width = itemList_dataGridView.Width / 100 * 25;
 
             itemList_dataGridView.ReadOnly = true;
 
@@ -116,8 +129,10 @@ namespace LootBox_RandomBox_
             orderResult_dataGridView.Columns.Add(resultOrderImg);
             orderResult_dataGridView.Columns.Add(resultOrderName);
 
-            orderResult_dataGridView.Columns[0].Width = 60;
-            orderResult_dataGridView.Columns[1].Width = 165;
+            //orderResult_dataGridView.Columns[0].Width = 60;
+            //orderResult_dataGridView.Columns[1].Width = 165;
+            orderResult_dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            orderResult_dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             orderResult_dataGridView.ReadOnly = true;
 
@@ -129,9 +144,13 @@ namespace LootBox_RandomBox_
             countResult_dataGridView.Columns.Add(resultCountName);
             countResult_dataGridView.Columns.Add(resultCountCount);
 
-            countResult_dataGridView.Columns[0].Width = 60;
-            countResult_dataGridView.Columns[1].Width = 125;
-            countResult_dataGridView.Columns[2].Width = 40;
+            //countResult_dataGridView.Columns[0].Width = 60;
+            //countResult_dataGridView.Columns[1].Width = 125;
+            //countResult_dataGridView.Columns[2].Width = 40;
+
+            countResult_dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            countResult_dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            countResult_dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             countResult_dataGridView.ReadOnly = true;
 
@@ -168,7 +187,7 @@ namespace LootBox_RandomBox_
         {
             // English
             switch(language_comboList.SelectedIndex){
-                case 0:
+                case Language.english:
                     this.Text = "LootBox";
                     boxList_label.Text = "Box List";
                     addButton.Text = "Add";
@@ -188,17 +207,21 @@ namespace LootBox_RandomBox_
                     probabilityColumn.HeaderText = "Probability";
                     probabilityColumn.Name = "text";
 
-                    // resultOrderList
+                    // orderResultList
                     resultOrderImg.HeaderText = "Image";
                     resultOrderName.HeaderText = "Name";
 
-                    // resultCountList
+                    // countResultList
                     resultCountImg.HeaderText = "Image";
                     resultCountName.HeaderText = "Name";
                     resultCountCount.HeaderText = "Count";
+
+                    //resetButton
+                    resetBtn.Text = "Reset!";
+
                     break;
 
-                case 1:
+                case Language.korean:
                     this.Text = "랜덤 박스";
                     boxList_label.Text = "내용물";
                     addButton.Text = "추가";
@@ -218,7 +241,7 @@ namespace LootBox_RandomBox_
                     probabilityColumn.HeaderText = "확률";
                     probabilityColumn.Name = "text";
 
-                    //resultOrderList
+                    //orderResultList
                     resultOrderImg.HeaderText = "이미지";
                     resultOrderName.HeaderText = "이름";
 
@@ -226,9 +249,12 @@ namespace LootBox_RandomBox_
                     resultCountImg.HeaderText = "이미지";
                     resultCountName.HeaderText = "이름";
                     resultCountCount.HeaderText = "개수";
-                    break;
 
-                case 2:
+                    // resetBtn
+                    resetBtn.Text = "초기화";
+
+                    break;
+                case Language.japanese:
                     this.Text = "ランダムボックス";
                     boxList_label.Text = "アイテムリスト";
                     addButton.Text = "追加";
@@ -248,16 +274,19 @@ namespace LootBox_RandomBox_
                     probabilityColumn.HeaderText = "確率";
                     probabilityColumn.Name = "text";
 
-                    // resultOrderList
+                    // orderResultList
                     resultOrderImg.HeaderText = "イメージ";
                     resultOrderName.HeaderText = "名前";
 
-                    // resultCountList
+                    // countResultList
                     resultCountImg.HeaderText = "イメージ";
                     resultCountName.HeaderText = "名前";
                     resultCountCount.HeaderText = "改修";
-                    break;
 
+                    // resetBtn
+                    resetBtn.Text = "リセット";
+
+                    break;
             }
         }
 
@@ -283,7 +312,7 @@ namespace LootBox_RandomBox_
                 Debug.WriteLine(deleteIndex[0].ToString());
                 itemList.RemoveAt(deleteIndex[i]);
                 itemList_dataGridView.Rows.Remove(itemList_dataGridView.Rows[deleteIndex[i]]);
-                resultCountList.RemoveAt(deleteIndex[i]);
+                countResultList.RemoveAt(deleteIndex[i]);
                 countResult_dataGridView.Rows.Remove(countResult_dataGridView.Rows[deleteIndex[i]]);
                 deleteIndex.RemoveAt(i);
             }
@@ -326,8 +355,6 @@ namespace LootBox_RandomBox_
                 //BinaryWriter bw = new BinaryWriter(fs);
                 StreamWriter bw = new StreamWriter(fs, Encoding.UTF8);
 
-                string[] msg = new string[3];
-
                 if (itemList.Count != 0)
                 {
                     for(int i=0; i<itemList.Count; i++)
@@ -347,20 +374,56 @@ namespace LootBox_RandomBox_
                             bw.Write(itemList[i].Probability+"\n");
                         }
                     }
-                    msg[0] = "Save Complete!";
-                    msg[1] = "저장 완료!";
-                    msg[2] = "サーブ完了";
+                    SaveButtonMessageBox(0);
                     bw.Flush();
-                    MessageBox.Show(msg[language_comboList.SelectedIndex]);
+                    
                 }
                 else
                 {
-                    msg[0] = "No Data to Save";
-                    msg[1] = "저장할 데이터가 없습니다.";
-                    msg[2] = "データがありません。";
+                    SaveButtonMessageBox(1);
                     bw.Flush();
-                    MessageBox.Show(msg[language_comboList.SelectedIndex]);
                 }
+            }
+        }
+        private void SaveButtonMessageBox(int index)
+        {
+            switch (index)
+            {
+                // 저장 완료
+                case 0:
+                    switch (language_comboList.SelectedIndex)
+                    {
+                        case Language.english:
+                            MessageBox.Show("Save Complete!");
+                            break;
+
+                        case Language.korean:
+                            MessageBox.Show("저장 완료!");
+                            break;
+
+                        case Language.japanese:
+                            MessageBox.Show("サーブ完了");
+                            break;
+                    }
+                    break;
+
+                // 저장할 데이터가 없을 시
+                case 1:
+                    switch (language_comboList.SelectedIndex)
+                    {
+                        case Language.english:
+                            MessageBox.Show("No Data to Save");
+                            break;
+
+                        case Language.korean:
+                            MessageBox.Show("저장할 데이터가 없습니다.");
+                            break;
+
+                        case Language.japanese:
+                            MessageBox.Show("データがありません。");
+                            break;
+                    }
+                    break;
             }
         }
 
@@ -368,23 +431,9 @@ namespace LootBox_RandomBox_
         private void LoadButton_Click(object sender, EventArgs e)
         {
             //이미 만들어진 리스트가 있을 떄 덮어쓸것인지   
-            if(itemList.Count != 0)
+            if(itemList.Count != 0 && !LoadButtonCheck())
             {
-                string[] msg = new string[3] {
-                    "The existing List will be erased. are you okay?",
-                    "기존 리스트가 지워집니다. 괜찮으십니까?",
-                    "今のリストが消えます。問題ありませんですか。"
-                };
-                string[] headmsg = new string[3]
-                {
-                    "Warning",
-                    "경고",
-                    "警告"
-                };
-                if (MessageBox.Show(msg[language_comboList.SelectedIndex],headmsg[language_comboList.SelectedIndex],MessageBoxButtons.YesNo) == DialogResult.No)
-                {
-                    return;
-                }
+                return;
             }
 
             string[] saveFile = File.ReadAllLines("data.dat");
@@ -422,26 +471,33 @@ namespace LootBox_RandomBox_
             }
         }
 
+        // 로드 버튼 클릭시 체크
+        private bool LoadButtonCheck()
+        {
+            string[] msg = new string[3] {
+                    "The existing List will be erased. are you okay?",
+                    "기존 리스트가 지워집니다. 괜찮으십니까?",
+                    "今のリストが消えます。問題ありませんですか。"
+            };
+            string[] headmsg = new string[3]
+            {
+                    "Warning",
+                    "경고",
+                    "警告"
+            };
+            if (MessageBox.Show(msg[language_comboList.SelectedIndex], headmsg[language_comboList.SelectedIndex], MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return false;
+            }
+            return true;
+        }
+
         // 아이템이 없을 경우 메세지를 띄우고, 아이템이 있을 경우 확률 설정 페이지를 띄운다.
         private void ProbabilityButton_Click(object sender, EventArgs e)
         {
             if(itemList.Count == 0)
             {
-                switch (language_comboList.SelectedIndex)
-                {
-                    // English
-                    case 0:
-                        MessageBox.Show("Please Add the Item");
-                        break;
-                    // Korean
-                    case 1:
-                        MessageBox.Show("아이템을 추가해 주세요");
-                        break;
-                    // Japanese
-                    case 2:
-                        MessageBox.Show("アイテムの追加してください。");
-                        break;
-                }
+                ProbabilityButtonMessageBox();
                 return;
             }
             ProbabilityBtn probabilityBtn = new ProbabilityBtn(language_comboList.SelectedIndex,ref itemList, this);
@@ -449,32 +505,45 @@ namespace LootBox_RandomBox_
             probabilityBtn.ShowDialog();
         }
 
+        // 확률버튼의 메세지박스
+        private void ProbabilityButtonMessageBox()
+        {
+            switch (language_comboList.SelectedIndex)
+            {
+                // English
+                case Language.english:
+                    MessageBox.Show("Please Add the Item");
+                    break;
+                // Korean
+                case Language.korean:
+                    MessageBox.Show("아이템을 추가해 주세요");
+                    break;
+                // Japanese
+                case Language.japanese:
+                    MessageBox.Show("アイテムの追加してください。");
+                    break;
+            }
+        }
+
         // Try버튼을 클릭하였을 때 랜덤 뽑기를 진행
         private void TryButton_Click(object sender, EventArgs e)
         {
             decimal sum = 0;
 
+            // 리스트에 아이템이 없을 경우 처리
+            if(itemList.Count == 0)
+            {
+                TryButtonMessageBox(0);
+                return;
+            }
+
             foreach(LootItem item in itemList)
             {
                 sum += item.Probability;
             }
-            if(sum != 100)
+            if(sum > 100)
             {
-                switch (language_comboList.SelectedIndex)
-                {
-                    case 0:
-                        MessageBox.Show("Please make to total probability at 100%");
-                        break;
-
-                    case 1:
-                        MessageBox.Show("확률의 합계를 100%로 맞춰주세요");
-                        break;
-
-                    case 2:
-                        MessageBox.Show("確率の合計を100%にしてください");
-                        break;
-                }
-
+                TryButtonMessageBox(1);
                 return;
             }
 
@@ -483,7 +552,22 @@ namespace LootBox_RandomBox_
 
             decimal min = 0;
             decimal max = itemList[0].Probability;
-            Debug.WriteLine(randomResult.ToString());
+
+            // 100 미만일 시 나머지를 꽝으로 처리
+            if (sum < 100)
+            {
+                string[] lang = new string[3] { "lose", "꽝", "空っぽ" };
+
+                if (loseItem == null)
+                {
+                    loseItem = new ResultLootItem(lang[language_comboList.SelectedIndex], 100.0m - sum);
+                    countResultList.Add(loseItem);
+                    countResult_dataGridView.Rows.Add(loseItem.ItemImage,loseItem.Name,loseItem.Count);
+                }
+                loseItem.Probability = 100.0m - sum;
+                itemList.Add(loseItem);
+            }
+
             for(int i=0; i<itemList.Count; i++)
             {
                 Debug.WriteLine("min : {0}, prob : {1}", min*1000, itemList[i].Probability*1000);
@@ -492,33 +576,47 @@ namespace LootBox_RandomBox_
                 {
                     Debug.WriteLine("당첨!");
                     if (itemList[i].ImgFIlePath.Equals("NULL")) {
-                        resultOrderList.Add(new ResultLootItem(itemList[i].Name,itemList[i].Probability));
+                        orderResultList.Add(new ResultLootItem(itemList[i].Name,itemList[i].Probability));
                     }
                     else
                     {
-                        resultOrderList.Add(new ResultLootItem(itemList[i].Name, itemList[i].Probability, itemList[i].ItemImage, itemList[i].OriginalImage, itemList[i].ImgFIlePath));
+                        orderResultList.Add(new ResultLootItem(itemList[i].Name, itemList[i].Probability, itemList[i].ItemImage, itemList[i].OriginalImage, itemList[i].ImgFIlePath));
                     }
                     orderResult_dataGridView.Rows.Add(itemList[i].ItemImage, itemList[i].Name);
-                    resultCountList[i].Count++;
+                    countResultList[i].Count++;
                     Debug.WriteLine(countResult_dataGridView.Rows[i].Cells[2].Value);
-                    Debug.WriteLine(resultCountList[i].Count);
+                    Debug.WriteLine(countResultList[i].Count);
 
-                    countResult_dataGridView.Rows[i].Cells[2].Value = resultCountList[i].Count;
+                    countResult_dataGridView.Rows[i].Cells[2].Value = countResultList[i].Count;
 
                     ResultPage resultPage = new ResultPage(itemList[i], language_comboList.SelectedIndex);
 
                     resultPage.ShowDialog();
 
-                    break;
+                    for(int k = 0; k < itemList.Count; k++)
+                    {
+                        if (loseItem == null)
+                            break;
+                        if(itemList[k].GetHashCode() == loseItem.GetHashCode())
+                        {
+                            // 성공
+                            itemList.RemoveAt(k);
+                            break;
+                        }
+                    }
+                    return;
                 }
                 // 실패
                 else
                 {
                     Debug.WriteLine("실패");
                     min = itemList[i].Probability;
+                    if (itemList.Count == i + 1)
+                        break;
                     max += itemList[i + 1].Probability;
                 }
             }
+            MessageBox.Show("꽝!");
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -534,15 +632,15 @@ namespace LootBox_RandomBox_
                 orderResult_dataGridView.Visible = true;
                 switch (language_comboList.SelectedIndex)
                 {
-                    case 0:
+                    case Language.english:
                         resultChangeBtn.Text = "Change to Count";
                         break;
 
-                    case 1:
+                    case Language.korean:
                         resultChangeBtn.Text = "개수로 변경";
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         resultChangeBtn.Text = "改修に変更";
                         break;
                 }
@@ -553,19 +651,110 @@ namespace LootBox_RandomBox_
                 orderResult_dataGridView.Visible = false;
                 switch (language_comboList.SelectedIndex)
                 {
-                    case 0:
+                    case Language.english:
                         resultChangeBtn.Text = "Change in Order";
                         break;
 
-                    case 1:
+                    case Language.korean:
                         resultChangeBtn.Text = "순서로 변경";
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         resultChangeBtn.Text = "順序に変更";
                         break;
                 }
             }
+        }
+
+        // TryButton의 메세지박스
+        private void TryButtonMessageBox(int index)
+        {
+            switch (index)
+            {
+                // 리스트에 아이템이 없을 경우 처리
+                case 0:
+                    switch (language_comboList.SelectedIndex)
+                    {
+                        case Language.english:
+                            MessageBox.Show("Please put the Item");
+                            break;
+
+                        case Language.korean:
+                            MessageBox.Show("아이템을 넣어주세요.");
+                            break;
+
+                        case Language.japanese:
+                            MessageBox.Show("アイテムを入れてください。");
+                            break;
+                    }
+                    break;
+
+                // 합계가 100 초과일 시 나오는 메세지
+                case 1:
+                    switch (language_comboList.SelectedIndex)
+                    {
+                        case Language.english:
+                            MessageBox.Show("Please make to total probability to 100% or less");
+                            break;
+
+                        case Language.korean:
+                            MessageBox.Show("확률의 합계를 100% 이하로 맞춰주세요");
+                            break;
+
+                        case Language.japanese:
+                            MessageBox.Show("確率の合計を100%以下にしてください");
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void ResetButtonMessageBox()
+        {
+            switch (language_comboList.SelectedIndex)
+            {
+                case Language.english:
+                    MessageBox.Show("No list to Reset");
+                    break;
+
+                case Language.korean:
+                    MessageBox.Show("리셋할 리스트가 없습니다.");
+                    break;
+
+                case Language.japanese:
+                    MessageBox.Show("リセットするリストがありません。");
+                    break;
+            }
+        }
+
+        // 리스트버튼 클릭시 실행
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            if (orderResultList.Count == 0)
+            {
+                ResetButtonMessageBox();
+                return;
+            }
+            // 리스트 클리어
+            foreach(ResultLootItem t in countResultList)
+            {
+                t.Count = 0;
+            }
+
+            orderResultList.Clear();
+
+            for(int i= orderResult_dataGridView.Rows.Count - 1; i >= 0; i--)
+            {
+                orderResult_dataGridView.Rows.RemoveAt(i);
+            }
+            
+            for(int i = 0; i < countResult_dataGridView.Rows.Count; i++)
+            {
+                countResult_dataGridView.Rows[i].Cells[2].Value = countResultList[i].Count;
+                if (countResult_dataGridView.Rows[i].Cells[1].Value.ToString() == loseItem.Name)
+                    countResult_dataGridView.Rows.RemoveAt(i);
+            }
+            loseItem = null;
         }
     }
 }

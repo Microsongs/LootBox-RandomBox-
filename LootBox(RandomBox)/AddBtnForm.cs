@@ -17,6 +17,7 @@ namespace LootBox_RandomBox_
         private int selected = 0;
         private string imgFileName;
         mainWindow main;
+
         public AddBtnForm()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace LootBox_RandomBox_
         public AddBtnForm(int selected, mainWindow main)
         {
             InitializeComponent();
+
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.selected = selected;
             this.main = main;
@@ -38,7 +40,7 @@ namespace LootBox_RandomBox_
             // English
             switch (selected)
             {
-                case 0:
+                case Language.english:
                     this.Text = "Add";
                     dataInputLabel.Text = "Enter data";
                     nameLabel.Text = "Name：";
@@ -48,7 +50,7 @@ namespace LootBox_RandomBox_
                     saveButton.Text = "Save";
                     break;
 
-                case 1:
+                case Language.korean:
                     this.Text = "추가";
                     dataInputLabel.Text = "데이터 입력";
                     nameLabel.Text = "이름 : ";
@@ -58,7 +60,7 @@ namespace LootBox_RandomBox_
                     saveButton.Text = "저장";
                     break;
 
-                case 2:
+                case Language.japanese:
                     this.Text = "追加";
                     dataInputLabel.Text = "データを追加";
                     nameLabel.Text = "名前 : ";
@@ -71,46 +73,6 @@ namespace LootBox_RandomBox_
             dataInputLabel.Location = new Point((this.Width / 2) - (dataInputLabel.Width / 2), 10);
         }
 
-        // 이미지 버튼 등록 메서드
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            string imgFile = string.Empty;
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.InitialDirectory = @"C:\";
-
-            if(dialog.ShowDialog() == DialogResult.OK)
-            {
-                imgFile = dialog.FileName;
-            }
-            else if(dialog.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-            try
-            {
-                imagePictureBox.Image = Bitmap.FromFile(imgFile);
-                imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                imgFileName = System.IO.Path.GetFileName(imgFile);
-            }
-            catch(Exception ex)
-            {
-                switch (selected)
-                {
-                    case 0:
-                        MessageBox.Show("Please load Image File!", "Error!");
-                        break;
-
-                    case 1:
-                        MessageBox.Show("이미지 파일을 불러오세요!", "불러오기 오류!");
-                        break;
-
-                    case 2:
-                        MessageBox.Show("イメージファイルをアップロードください。", "ロードエラー!");
-                        break;
-                }
-            }
-            
-        }
 
         // 제목 유무 확인
         private bool CheckName()
@@ -119,15 +81,15 @@ namespace LootBox_RandomBox_
             {
                 switch (selected)
                 {
-                    case 0:
+                    case Language.english:
                         MessageBox.Show("Name Please!", "Error!");
                         break;
 
-                    case 1:
+                    case Language.korean:
                         MessageBox.Show("이름을 넣어주세요!", "이름 오류!");
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         MessageBox.Show("名前を入れてください。", "エラー!");
                         break;
                 }
@@ -136,6 +98,35 @@ namespace LootBox_RandomBox_
             return true;
         }
 
+        /*
+        // 기존 리스트 포함 100%가 맞는지 체크
+        private bool CheckSumPercent()
+        {
+            decimal sum = 0;
+            foreach(LootItem num in itemList)
+            {
+                sum += num.Probability;
+            }
+            sum += decimal.Parse(probabilityTextbox.ToString());
+            if(sum == 100)
+            {
+                return true;
+            }
+            switch(selected){
+                case Language.english:
+                    MessageBox.Show("Sum the probability to 100%","probabilityError");
+                    break;
+                case Language.korean:
+                    MessageBox.Show("확률의 합계를 100%으로 맞춰주세요", "확률 에러!");
+                    break;
+                case Language.Japanese:
+                    MessageBox.Show("額率の合計を100%に合わせてください。");
+                    break;
+            }
+            return false;
+        }
+        */
+
         // 20바이트 초과 유무 확인
         private bool CheckLength()
         {
@@ -143,15 +134,15 @@ namespace LootBox_RandomBox_
             {
                 switch (selected)
                 {
-                    case 0:
+                    case Language.english:
                         MessageBox.Show("Please enter no more than 20 characters!", "Error!");
                         break;
 
-                    case 1:
+                    case Language.korean:
                         MessageBox.Show("20자 이하로 넣어주세요.", "글자크기 오류!");
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         MessageBox.Show("20文字以下で入力してください。", "エラー!");
                         break;
                 }
@@ -166,15 +157,15 @@ namespace LootBox_RandomBox_
             {
                 switch (selected)
                 {
-                    case 0:
+                    case Language.english:
                         MessageBox.Show("Please input the number!", "Error!");
                         break;
 
-                    case 1:
+                    case Language.korean:
                         MessageBox.Show("숫자를 정확히 넣어주세요", "숫자 오류!");
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         MessageBox.Show("数字を正しく入力ください。", "エラー!");
                         break;
                 }
@@ -190,15 +181,15 @@ namespace LootBox_RandomBox_
             {
                 switch (selected)
                 {
-                    case 0:
+                    case Language.english:
                         MessageBox.Show("Please input the right number!", "Error!");
                         break;
 
-                    case 1:
+                    case Language.korean:
                         MessageBox.Show("올바른 숫자를 넣어주세요", "숫자 오류!");
                         break;
 
-                    case 2:
+                    case Language.japanese:
                         MessageBox.Show("数字を正しく入力ください。", "エラー!");
                         break;
                 }
@@ -282,6 +273,52 @@ namespace LootBox_RandomBox_
         private void ProbabilityTextbox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        // 이미지 버튼 등록 메서드
+        private void ImageButtonClick(object sender, EventArgs e)
+        {
+            string imgFile = string.Empty;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.InitialDirectory = @"C:\";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                imgFile = dialog.FileName;
+            }
+            else if (dialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            try
+            {
+                imagePictureBox.Image = Bitmap.FromFile(imgFile);
+                imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                imgFileName = System.IO.Path.GetFileName(imgFile);
+            }
+            catch (Exception ex)
+            {
+                ImageButtonMessageBox();
+            }
+        }
+
+        // 이미지 버튼의 메세지박스
+        private void ImageButtonMessageBox()
+        {
+            switch (selected)
+            {
+                case 0:
+                    MessageBox.Show("Please load Image File!", "Error!");
+                    break;
+
+                case 1:
+                    MessageBox.Show("이미지 파일을 불러오세요!", "불러오기 오류!");
+                    break;
+
+                case 2:
+                    MessageBox.Show("イメージファイルをアップロードください。", "ロードエラー!");
+                    break;
+            }
         }
     }
 }

@@ -109,7 +109,7 @@
             this.imageButton.TabIndex = 6;
             this.imageButton.Text = "등록";
             this.imageButton.UseVisualStyleBackColor = true;
-            this.imageButton.Click += new System.EventHandler(this.Button1_Click);
+            this.imageButton.Click += new System.EventHandler(this.ImageButtonClick);
             // 
             // imagePictureBox
             // 
