@@ -751,6 +751,8 @@ namespace LootBox_RandomBox_
             for(int i = 0; i < countResult_dataGridView.Rows.Count; i++)
             {
                 countResult_dataGridView.Rows[i].Cells[2].Value = countResultList[i].Count;
+                if (loseItem == null)
+                    continue;
                 if (countResult_dataGridView.Rows[i].Cells[1].Value.ToString() == loseItem.Name)
                     countResult_dataGridView.Rows.RemoveAt(i);
             }

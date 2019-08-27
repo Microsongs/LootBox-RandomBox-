@@ -1,15 +1,21 @@
-﻿물딩딩이
-images\WaterElemental.PNG
-20
-돌딩딩이
+﻿돌의 정령
 images\Stone Elemental.PNG
-20
-독딩딩이
+25.000
+물의 정령
+images\WaterElemental.PNG
+25.000
+독의 정령
 images\PoisionElemental.PNG
-20
-전격검
-images\LightningSword.PNG
-15
-불꽃검
+25.000
+플레임 소드
 images\FlameSword.PNG
-15
+10.000
+응급키트
+images\Plus.PNG
+10.000
+드래곤J
+images\dragon.PNG
+4.000
+묠니르
+images\Thor's Hammer.PNG
+1
