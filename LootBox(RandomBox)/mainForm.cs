@@ -641,7 +641,7 @@ namespace LootBox_RandomBox_
                         break;
 
                     case Language.japanese:
-                        resultChangeBtn.Text = "改修に変更";
+                        resultChangeBtn.Text = "個数に変更";
                         break;
                 }
             }
@@ -660,7 +660,7 @@ namespace LootBox_RandomBox_
                         break;
 
                     case Language.japanese:
-                        resultChangeBtn.Text = "順序に変更";
+                        resultChangeBtn.Text = "順番に変更";
                         break;
                 }
             }
