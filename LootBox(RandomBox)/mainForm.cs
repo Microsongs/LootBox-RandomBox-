@@ -65,6 +65,8 @@ namespace LootBox_RandomBox_
         //시작하면서 기본사항 설정
         private void Init()
         {
+            // 윈도우창 위치 중앙으로
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             // 랜덤박스의 image를 설정
             lootBoxImage.Image = Properties.Resources.lootBoxImage;
             lootBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -350,39 +352,38 @@ namespace LootBox_RandomBox_
         // 저장 버튼
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            using(FileStream fs = new FileStream("data.dat", FileMode.Create))
+            if (itemList.Count != 0)
             {
-                //BinaryWriter bw = new BinaryWriter(fs);
-                StreamWriter bw = new StreamWriter(fs, Encoding.UTF8);
-
-                if (itemList.Count != 0)
+                using (FileStream fs = new FileStream("data.dat", FileMode.Create))
                 {
-                    for(int i=0; i<itemList.Count; i++)
+                    //BinaryWriter bw = new BinaryWriter(fs);
+                    StreamWriter bw = new StreamWriter(fs, Encoding.UTF8);
+                    for (int i = 0; i < itemList.Count; i++)
                     {
-                        if (itemList[i].ImgFIlePath == null) {
-                            bw.Write(itemList[i].Name+"\n");
+                        if (itemList[i].ImgFIlePath == null)
+                        {
+                            bw.Write(itemList[i].Name + "\n");
                             //Debug.WriteLine(Encoding.Default.GetString(itemList[i].ImgFIlePath));
                             //bw.Write(itemList[i].ItemImage.FileName);
-                            bw.Write("noPath"+"\n");
-                            bw.Write(itemList[i].Probability+"\n");
+                            bw.Write("noPath" + "\n");
+                            bw.Write(itemList[i].Probability + "\n");
                         }
                         else
                         {
-                            bw.Write(itemList[i].Name+"\n");
+                            bw.Write(itemList[i].Name + "\n");
                             Debug.WriteLine(itemList[i].ImgFIlePath);
-                            bw.Write(itemList[i].ImgFIlePath+"\n");
-                            bw.Write(itemList[i].Probability+"\n");
+                            bw.Write(itemList[i].ImgFIlePath + "\n");
+                            bw.Write(itemList[i].Probability + "\n");
                         }
                     }
                     SaveButtonMessageBox(0);
                     bw.Flush();
-                    
+
                 }
-                else
-                {
-                    SaveButtonMessageBox(1);
-                    bw.Flush();
-                }
+            }
+            else
+            {
+                SaveButtonMessageBox(1);
             }
         }
         private void SaveButtonMessageBox(int index)
@@ -431,12 +432,19 @@ namespace LootBox_RandomBox_
         private void LoadButton_Click(object sender, EventArgs e)
         {
             //이미 만들어진 리스트가 있을 떄 덮어쓸것인지   
-            if(itemList.Count != 0 && !LoadButtonCheck())
+            if(itemList.Count != 0 && !LoadButtonCheck(0))
             {
                 return;
             }
 
+            if (!File.Exists("data.dat"))
+            {
+                LoadButtonCheck(1);
+                return;
+            }
+
             string[] saveFile = File.ReadAllLines("data.dat");
+
             if (saveFile != null)
             {
                 for(int i=itemList.Count - 1; i>=0; i--)
@@ -472,24 +480,46 @@ namespace LootBox_RandomBox_
         }
 
         // 로드 버튼 클릭시 체크
-        private bool LoadButtonCheck()
+        private bool LoadButtonCheck(int index)
         {
-            string[] msg = new string[3] {
-                    "The existing List will be erased. are you okay?",
-                    "기존 리스트가 지워집니다. 괜찮으십니까?",
-                    "今のリストが消えます。問題ありませんですか。"
-            };
-            string[] headmsg = new string[3]
+            switch (index)
             {
-                    "Warning",
-                    "경고",
-                    "警告"
-            };
-            if (MessageBox.Show(msg[language_comboList.SelectedIndex], headmsg[language_comboList.SelectedIndex], MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                return false;
+                case 0:
+                    string[] msg = new string[3] {
+                            "The existing List will be erased. are you okay?",
+                            "기존 리스트가 지워집니다. 괜찮으십니까?",
+                            "今のリストが消えます。問題ありませんですか。"
+                    };
+                    string[] headmsg = new string[3]
+                    {
+                            "Warning",
+                            "경고",
+                            "警告"
+                    };
+                    if (MessageBox.Show(msg[language_comboList.SelectedIndex], headmsg[language_comboList.SelectedIndex], MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return false;
+                    }
+                    return true;
+                case 1:
+                    switch (language_comboList.SelectedIndex)
+                    {
+                        case Language.english:
+                            MessageBox.Show("The saved file does not exists.");
+                            break;
+
+                        case Language.korean:
+                            MessageBox.Show("저장 파일이 존재하지 않습니다.");
+                            break;
+
+                        case Language.japanese:
+                            MessageBox.Show("サーブファイルが存在しません。");
+                            break;
+                    }
+                    return false;
+                default:
+                    return false;
             }
-            return true;
         }
 
         // 아이템이 없을 경우 메세지를 띄우고, 아이템이 있을 경우 확률 설정 페이지를 띄운다.

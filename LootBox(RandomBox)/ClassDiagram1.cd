@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LootBox_RandomBox_.AddBtnForm" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="mainForm" Type="LootBox_RandomBox_.mainWindow" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.562" Y="5.75" />
+        <Point X="2.562" Y="5.375" />
+        <Point X="2.917" Y="5.375" Type="JumpStart" />
+        <Point X="3.083" Y="5.375" Type="JumpEnd" />
+        <Point X="4.917" Y="5.375" Type="JumpStart" />
+        <Point X="5.083" Y="5.375" Type="JumpEnd" />
+        <Point X="5.417" Y="5.375" Type="JumpStart" />
+        <Point X="5.583" Y="5.375" Type="JumpEnd" />
+        <Point X="6.062" Y="5.375" />
+        <Point X="6.062" Y="4.3" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>DAwABACAEDAQgAAAAgCAADACCAAIEAAABAAQAiAQCAA=</HashCode>
+      <FileName>AddBtnForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mainForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LootBox_RandomBox_.DeleteBtnForm" Collapsed="true">
+    <Position X="4.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAAABAACAIAACAQgCAAAACCAAgAAAAAAACACAQAAA=</HashCode>
+      <FileName>DeleteBtnForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mainForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LootBox_RandomBox_.Language">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAABAAA=</HashCode>
+      <FileName>Language.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.LootItem">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAACQAAAAgAAAAggAAAIIQAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>LootItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.mainWindow">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>RAAICEQABCFYAICCUEGkQMEGgSApgCERkAEKABQRASE=</HashCode>
+      <FileName>mainForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="itemList" />
+      <Field Name="countResultList" />
+      <Field Name="orderResultList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="LootBox_RandomBox_.ProbabilityBtn" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAIACEIQACAQgCJACECCAAAgAAAAAASAAAQAAQ=</HashCode>
+      <FileName>ProbabilityBtn.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mainForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LootBox_RandomBox_.Program" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.ResultLootItem">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResultLootItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.ResultPage" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAAAAASACAAAACAAACQAIAAAgAAAAAAAA=</HashCode>
+      <FileName>ResultPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.Properties.Resources" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LootBox_RandomBox_.Properties.Settings" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

@@ -16,7 +16,7 @@ namespace LootBox_RandomBox_
     {
         private int selected = 0;
         private string imgFileName;
-        mainWindow main;
+        mainWindow mainForm;
 
         public AddBtnForm()
         {
@@ -29,7 +29,7 @@ namespace LootBox_RandomBox_
 
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.selected = selected;
-            this.main = main;
+            this.mainForm = main;
             nameTextbox.MaxLength = 20;
             addInit();
         }
@@ -237,7 +237,7 @@ namespace LootBox_RandomBox_
             {
                 lootitem = new LootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text));
                 resultItem = new ResultLootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text));
-                main.AddItem(lootitem, resultItem);
+                mainForm.AddItem(lootitem, resultItem);
             }
             else
             {
@@ -253,7 +253,7 @@ namespace LootBox_RandomBox_
 
                     lootitem = new LootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text), newSize, image, filePath);
                     resultItem = new ResultLootItem(nameTextbox.Text, decimal.Parse(probabilityTextbox.Text), newSize, image, filePath);
-                    main.AddItem(lootitem, resultItem);
+                    mainForm.AddItem(lootitem, resultItem);
                 }
             }
             this.Close();
