@@ -1,7 +1,7 @@
 # LootBox(RandomBox)
 - This program allows you to try Lootbox that exist in many games.
 - 이 프로그램을 사용하면 많은 게임들에 존재하는 랜덤 박스를 실행해 볼 수 있습니다.
-- このプログラムを利用して、多くなゲームに存在するガチャを利用できます。
+- このプログラムを利用して、多くのゲームに存在するガチャを利用することができます。
 
 ## Summary (Eng)
 This Program is LootBox program. You can use this program to add items (images, names, 
